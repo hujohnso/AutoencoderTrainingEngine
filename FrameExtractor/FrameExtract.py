@@ -1,8 +1,5 @@
-#Import for reading from pytube
 from pytube import YouTube
-#import for splitting the images into frames
 import cv2
-#removes and deletes images
 import shutil
 import os
 
@@ -31,12 +28,6 @@ def split_video_into_frames_and_save_pngs(filePath):
         success, image = vidcap.read()
         print('Read a new frame: ', success)
         count += 1
-    # for i in range(10):
-    #     cv2.imwrite(filePath + "frame%d.jpg" % count, image)
-    #     success, image = vidcap.read()
-    #     print('Read a new frame: ', success)
-    #     count += 1
-
 
 if __name__ == "__main__":
     filePath = "./tmp"
