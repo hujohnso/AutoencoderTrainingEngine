@@ -17,7 +17,7 @@ def timer(executable, function_executed):
 
 def run_all_steps(autoEncoder):
     input_matrix = timer(lambda: auto_encoder.init_training_matrix(), "image vector creation")
-    auto_encoder_model = timer(lambda: auto_encoder.create_auto_encoder(input_matrix), "model creation")
+    auto_encoder_model = timer(lambda: auto_encoder.build_model(input_matrix), "model creation")
     auto_encoder_model = timer(lambda: auto_encoder.train(input_matrix, auto_encoder_model), "the model to train")
     timer(lambda: auto_encoder.visualize(auto_encoder_model), "visualize")
 

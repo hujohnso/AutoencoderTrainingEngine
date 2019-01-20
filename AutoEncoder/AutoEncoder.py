@@ -1,3 +1,4 @@
+from keras.engine.saving import load_model
 from keras.initializers import RandomUniform, Zeros, Constant, SparceInitializer
 import abc
 from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, BatchNormalization, LeakyReLU, Add
@@ -73,7 +74,7 @@ class AutoEncoder:
         input_matrix = None
         for i in range(self.hyper_params.number_of_images):
             image = img_as_float((
-                data.load(self.hyper_params.file_path + self.hyper_params.original_video + "frame%d.jpg" % (300 + i * 10),
+                data.load(self.hyper_params.file_path_for_frames + self.hyper_params.original_video + "frame%d.jpg" % (300 + i * 10),
                           as_gray=self.hyper_params.as_gray)))
             image = self.prepare_single_image(image)
             if i == 0:
@@ -115,8 +116,17 @@ class AutoEncoder:
                   shuffle=True,
                   validation_data=(input_matrix, input_matrix.reshape(self.hyper_params.number_of_images, -1)),
                   callbacks=[TensorBoard(log_dir='/tmp/autoencoder')])
+        self.save_model(model)
         return model
 
+    def save_model(self, model_to_save):
+        model_to_save.save(self.hyper_params.working_model_path)
+
+    def build_model(self, input_image_vector):
+        if self.hyper_params.load_model:
+            return load_model(self.hyper_params.working_model_path)
+        else:
+            return self.create_auto_encoder(input_image_vector)
 
 
 

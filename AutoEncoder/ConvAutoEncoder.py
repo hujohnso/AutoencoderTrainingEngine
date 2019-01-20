@@ -74,7 +74,7 @@ class ConvAutoEncoder(AutoEncoder):
     # selbeleidy@mymail.mines.edu
 
     def visualize(self, trained_model):
-        image = img_as_float(data.load(self.hyper_params.file_path + self.hyper_params.test_image_name,
+        image = img_as_float(data.load(self.hyper_params.file_path_for_frames + self.hyper_params.test_image_name,
                                        as_gray=self.hyper_params.as_gray))
         fig, ax = plt.subplots(1, 3)
         ax[0].set_title("Original Image", fontsize=12)

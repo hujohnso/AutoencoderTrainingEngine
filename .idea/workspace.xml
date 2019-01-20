@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="716c36a2-ed47-4992-a553-1a091cf9014c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ModelRunner/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/saved_models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoEncoder/TestAutoEncoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEncoder/TestAutoEncoder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrameExtractor/FrameExtract.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrameExtractor/FrameExtract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +23,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="420">
-                    <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+                  <state relative-caret-position="414">
+                    <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
                   </state>
                 </provider>
               </entry>
@@ -48,20 +45,22 @@
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="3" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="60" />
-          <entry key="py" value="15095" />
+          <entry key="py" value="15732" />
+          <entry key="txt" value="107" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="60" />
-          <entry key="Python" value="15095" />
+          <entry key="PLAIN_TEXT" value="167" />
+          <entry key="Python" value="15732" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -84,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ModelRunner/TrainingEngine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="375">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -96,10 +95,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            <state relative-caret-position="270">
+              <caret line="122" selection-start-line="122" selection-end-line="122" />
               <folding>
-                <element signature="e#0#80#0" expanded="true" />
+                <element signature="e#0#42#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,8 +107,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="97" column="8" lean-forward="true" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="18" />
+            <state relative-caret-position="379">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -120,7 +119,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/keras/engine/training_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
+            <state relative-caret-position="1755">
               <caret line="127" selection-start-line="127" selection-end-line="127" />
             </state>
           </provider>
@@ -129,7 +128,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
+            <state relative-caret-position="525">
               <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
@@ -141,11 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FrameExtractor/FrameExtract.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-              <folding>
-                <element signature="e#32#58#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -166,6 +162,9 @@
       <find>Spar</find>
       <find>AutoEn</find>
       <find>train</find>
+      <find>ba</find>
+      <find>file_path</find>
+      <find>file</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,12 +179,12 @@
         <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/keras/initializers.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/ConvolutionalAutoEncoder.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/TestAutoEncoder.py" />
-        <option value="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" />
-        <option value="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" />
         <option value="$PROJECT_DIR$/FrameExtractor/FrameExtract.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py" />
-        <option value="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py" />
+        <option value="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" />
+        <option value="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" />
+        <option value="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" />
       </list>
     </option>
   </component>
@@ -200,6 +199,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -210,13 +210,12 @@
             <path>
               <item name="Research2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="Research2018" type="462c0819:PsiDirectoryNode" />
-              <item name="ModelRunner" type="462c0819:PsiDirectoryNode" />
+              <item name="saved_models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -375,6 +374,14 @@
       <option name="presentableId" value="Default" />
       <updated>1543785503366</updated>
     </task>
+    <task id="LOCAL-00001" summary="Reformated because my code was a sloppy mess">
+      <created>1547841644239</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1547841644239</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -402,6 +409,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Reformated because my code was a sloppy mess" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformated because my code was a sloppy mess" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -416,9 +427,9 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="29" />
+          <url>file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py</url>
+          <line>122</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -498,6 +509,11 @@ plt.show()</expression-string>
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>self.hyper_params.model_path_and_name</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>plt.show()</expression-string>
         <language-id>Python</language-id>
@@ -702,9 +718,6 @@ plt.show()</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#37#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -718,43 +731,16 @@ plt.show()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/FrameExtract.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#32#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModelRunner/TrainingEngine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/keras/engine/training_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="1755">
           <caret line="127" selection-start-line="127" selection-end-line="127" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
+        <state relative-caret-position="525">
           <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
@@ -762,20 +748,44 @@ plt.show()</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/FrameExtract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModelRunner/TrainingEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        <state relative-caret-position="270">
+          <caret line="122" selection-start-line="122" selection-end-line="122" />
           <folding>
-            <element signature="e#0#80#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="97" column="8" lean-forward="true" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="18" />
+        <state relative-caret-position="379">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
