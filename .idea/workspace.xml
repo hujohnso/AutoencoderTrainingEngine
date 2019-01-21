@@ -200,6 +200,11 @@
               <item name="Research2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="Research2018" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Research2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Research2018" type="462c0819:PsiDirectoryNode" />
+              <item name="saved_models" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -382,13 +387,13 @@
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1971534" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1971534" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32878152" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.43487394" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.23634453" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.23634453" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
