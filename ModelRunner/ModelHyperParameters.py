@@ -15,4 +15,6 @@ class ModelHyperParameters:
     test_image_name = "Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame400.jpg"
     model_name = "my_model.h5"
     working_model_path = base_file_path + "saved_models/" + model_name
+    tensor_board_directory = base_file_path + "tensor_board_models"
     load_model = True
+    #tensorboard --logdir ./tensor_board_models --host=127.0.0.1

@@ -20,7 +20,6 @@ class AutoEncoder:
     image_height_after_rescale: int = None
     image_depth_after_rescale: int = None
 
-
     def __init__(self, model_hyper_parameters):
         self.hyper_params = model_hyper_parameters
 
@@ -94,7 +93,6 @@ class AutoEncoder:
                              self.image_height_after_rescale,
                              self.image_depth_after_rescale)
 
-
     def prepare_single_image_for_visualize(self, image):
         if self.hyper_params.as_gray:
             return image.reshape(self.image_width_after_rescale, self.image_height_after_rescale)
@@ -115,7 +113,10 @@ class AutoEncoder:
                   batch_size=self.hyper_params.batch_size,
                   shuffle=True,
                   validation_data=(input_matrix, input_matrix.reshape(self.hyper_params.number_of_images, -1)),
-                  callbacks=[TensorBoard(log_dir='/tmp/autoencoder')])
+                  callbacks=[TensorBoard(log_dir=self.hyper_params.tensor_board_directory,
+                                         histogram_freq=0,
+                                         write_graph=True,
+                                         write_images=False)])
         self.save_model(model)
         return model
 
