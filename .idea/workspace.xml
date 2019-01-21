@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="716c36a2-ed47-4992-a553-1a091cf9014c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" afterDir="false" />
-    </list>
+    <list default="true" id="716c36a2-ed47-4992-a553-1a091cf9014c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +17,7 @@
               <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="460">
-                    <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+                    <caret line="20" selection-start-line="20" selection-end-line="20" />
                   </state>
                 </provider>
               </entry>
@@ -783,7 +779,7 @@ plt.show()</expression-string>
     <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
