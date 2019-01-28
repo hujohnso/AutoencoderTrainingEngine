@@ -1,9 +1,10 @@
 import time
 
-from AutoEncoder import ConvAutoEncoder
+from AutoEncoder import ConvAutoEncoder, FullyConnectedAutoEncoder
 from ModelRunner.ModelHyperParameters import ModelHyperParameters
 
 hyper_parameters = ModelHyperParameters()
+# auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
 auto_encoder = ConvAutoEncoder.ConvAutoEncoder(hyper_parameters)
 
 
@@ -25,7 +26,11 @@ def run_all_steps(autoEncoder):
 if __name__ == "__main__":
     run_all_steps(auto_encoder)
 
-
+#Next coding steps: Make a dev an test set to compaire error
+#Maybe set up a training strategy to set the batch size down
+#Make a convolutional auto encoder
+#Make U-net
+#Attempt to train on more images.
 
 
 

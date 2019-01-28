@@ -1,3 +1,4 @@
+import cv2
 from keras.engine.saving import load_model
 from keras.initializers import RandomUniform, Zeros, Constant, SparceInitializer
 import abc
@@ -51,10 +52,6 @@ class AutoEncoder:
         # return RandomUniform(minval=.001, maxval=.1, seed=None)
 
     @abc.abstractmethod
-    def init_training_vector(self):
-        return
-
-    @abc.abstractmethod
     def create_auto_encoder(self, input_image_vector):
         return
 
@@ -72,9 +69,7 @@ class AutoEncoder:
     def init_training_matrix(self):
         input_matrix = None
         for i in range(self.hyper_params.number_of_images):
-            image = img_as_float((
-                data.load(self.hyper_params.file_path_for_frames + self.hyper_params.original_video + "frame%d.jpg" % (300 + i * 10),
-                          as_gray=self.hyper_params.as_gray)))
+            image = cv2.imread(self.hyper_params.file_path_for_frames + self.hyper_params.original_video + "frame%d.jpg" % (300 + i * self.hyper_params.frame_skipping_factor), 0)
             image = self.prepare_single_image(image)
             if i == 0:
                 self.save_original_dims(image)
@@ -86,6 +81,7 @@ class AutoEncoder:
         return input_matrix
 
     def prepare_single_image(self, image):
+        (thresh, image) = cv2.threshold(image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
         image = rescale(image, self.hyper_params.image_rescale_value, anti_aliasing=False)
         if self.image_width_after_rescale is None:
             self.save_original_dims(image)
@@ -129,6 +125,35 @@ class AutoEncoder:
         else:
             return self.create_auto_encoder(input_image_vector)
 
+    def visualize(self, trained_model):
+        i = 3
+        fig, ax = plt.subplots(3, 3)
+        for x in range(i):
+            # image = img_as_float((
+            #     data.load(
+            #         self.hyper_params.file_path_for_frames +
+            #         self.hyper_params.original_video +
+            #         "frame%d.jpg" % (300 + x * 100),
+            #         as_gray=self.hyper_params.as_gray)))
+            image = cv2.imread(self.hyper_params.file_path_for_frames + self.hyper_params.original_video + "frame%d.jpg" % (300 + x * 100), 0)
+            ax[x][0].set_title("Original Image", fontsize=12)
+            ax[x][0].imshow(image)
+            ax[x][0].set_axis_off()
+
+            ax[x][1].set_title("image fed in", fontsize=12)
+            ax[x][1].imshow(self.reformat_auto_encoder_format(self.prepare_single_image(image)))
+            ax[x][1].set_axis_off()
+
+            ax[x][2].set_title("Image after auto encoder", fontsize=12)
+            image_after_encoder = self.reformat_auto_encoder_format(
+                trained_model.predict(self.prepare_single_image(image).reshape(1,
+                                                                               self.image_width_after_rescale,
+                                                                               self.image_height_after_rescale,
+                                                                               self.image_depth_after_rescale)))
+            ax[x][2].imshow(image_after_encoder)
+            ax[x][2].set_axis_off()
+        fig.tight_layout()
+        plt.show()
 
 
 
