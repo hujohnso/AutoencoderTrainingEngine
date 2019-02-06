@@ -14,6 +14,8 @@ from skimage.transform import rescale
 from keras.callbacks import TensorBoard
 import random as rand
 
+from AutoEncoder.ImageManipulationType import ImageManipulationType
+
 
 class AutoEncoder:
     hyper_params = None
@@ -81,8 +83,7 @@ class AutoEncoder:
         return input_matrix
 
     def prepare_single_image(self, image):
-        (thresh, image) = cv2.threshold(image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
-        image = rescale(image, self.hyper_params.image_rescale_value, anti_aliasing=False)
+        image = self.rescaler(image)
         if self.image_width_after_rescale is None:
             self.save_original_dims(image)
         return image.reshape(self.image_width_after_rescale,
@@ -100,7 +101,7 @@ class AutoEncoder:
                                             self.image_height_after_rescale,
                                             self.image_depth_after_rescale)
         image_matrix = self.prepare_single_image_for_visualize(image_matrix)
-        image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
+        image = self.inverse_rescaler(image_matrix)
         return image
 
     def train(self, input_matrix, model):
@@ -129,12 +130,6 @@ class AutoEncoder:
         i = 3
         fig, ax = plt.subplots(3, 3)
         for x in range(i):
-            # image = img_as_float((
-            #     data.load(
-            #         self.hyper_params.file_path_for_frames +
-            #         self.hyper_params.original_video +
-            #         "frame%d.jpg" % (300 + x * 100),
-            #         as_gray=self.hyper_params.as_gray)))
             image = cv2.imread(self.hyper_params.file_path_for_frames + self.hyper_params.original_video + "frame%d.jpg" % (300 + x * 100), 0)
             ax[x][0].set_title("Original Image", fontsize=12)
             ax[x][0].imshow(image)
@@ -154,6 +149,20 @@ class AutoEncoder:
             ax[x][2].set_axis_off()
         fig.tight_layout()
         plt.show()
+
+    def rescaler(self, image_to_alter):
+        if self.hyper_params.type_of_transformation == ImageManipulationType.PIXEL:
+            return cv2.resize(image_to_alter,
+                              (self.hyper_params.pixel_resize_value, self.hyper_params.pixel_resize_value))
+        elif self.hyper_params.type_of_transformation == ImageManipulationType.RATIO:
+            return  rescale(image_to_alter, self.hyper_params.image_rescale_value, anti_aliasing=False)
+        elif self.hyper_params.type_of_transformation == ImageManipulationType.NONE:
+            return image_to_alter
+
+    def inverse_rescaler(self, image_to_alter):
+        return image_to_alter
+        # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
+
 
 
 
