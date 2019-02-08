@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="716c36a2-ed47-4992-a553-1a091cf9014c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AutoEncoder/ImageManipulationType.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoEncoder/FullyConvolutionalAutoEncoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEncoder/FullyConvolutionalAutoEncoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrameExtractor/FrameExtract.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrameExtractor/FrameExtract.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" afterDir="false" />
     </list>
@@ -15,76 +15,66 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="696">
-                    <caret line="29" column="56" lean-forward="true" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1985450188">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.26" value="1" />
-          <entry key="project.open.time.5" value="5" />
-          <entry key="project.open.time.6" value="6" />
+          <entry key="project.open.time.5" value="6" />
+          <entry key="project.open.time.6" value="7" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="60" />
-          <entry key="py" value="20509" />
+          <entry key="py" value="21931" />
           <entry key="txt" value="163" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="223" />
-          <entry key="Python" value="20509" />
+          <entry key="Python" value="21931" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="jpg" value="24" />
-          <entry key="png" value="1" />
-          <entry key="py" value="56" />
+          <entry key="jpg" value="31" />
+          <entry key="png" value="2" />
+          <entry key="py" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Image" value="25" />
-          <entry key="Python" value="56" />
+          <entry key="Image" value="33" />
+          <entry key="Python" value="60" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ModelRunner/TrainingEngine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+            <state relative-caret-position="416">
+              <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -95,10 +85,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+            <state relative-caret-position="319">
+              <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
               <folding>
-                <element signature="e#0#47#0" expanded="true" />
+                <element signature="e#0#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AutoEncoder/FullyConvolutionalAutoEncoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-420">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="255">
+              <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="45" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -128,8 +118,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+            <state relative-caret-position="972">
+              <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -174,22 +164,23 @@
         <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/keras/initializers.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/ConvolutionalAutoEncoder.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/TestAutoEncoder.py" />
-        <option value="$PROJECT_DIR$/FrameExtractor/FrameExtract.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/ResidualAutoencoder.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py" />
-        <option value="$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/FullyConvolutionalAutoEncoder.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/ImageManipulationType.py" />
+        <option value="$PROJECT_DIR$/FrameExtractor/FrameExtract.py" />
+        <option value="$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py" />
+        <option value="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/AutoEncoder.py" />
         <option value="$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py" />
-        <option value="$PROJECT_DIR$/ModelRunner/TrainingEngine.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2223" />
-    <option name="width" value="1723" />
-    <option name="height" value="789" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="1853" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -197,7 +188,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,17 +203,13 @@
             <path>
               <item name="Research2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="Research2018" type="462c0819:PsiDirectoryNode" />
-              <item name="FrameExtractor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Research2018" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Research2018" type="462c0819:PsiDirectoryNode" />
-              <item name="saved_models" type="462c0819:PsiDirectoryNode" />
+              <item name="tensor_board_models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,10 +350,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.TrainingEngine" />
+        <item itemvalue="Python.FrameExtract" />
         <item itemvalue="Python.TestAutoEncoder" />
         <item itemvalue="Python.GradientOfImage" />
         <item itemvalue="Python.Chan-Vese" />
-        <item itemvalue="Python.FrameExtract" />
       </list>
     </recent_temporary>
   </component>
@@ -400,16 +386,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
+    <frame x="134" y="35" width="3066" height="1765" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1544544" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27498347" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32878152" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.61869746" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3277311" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39612558" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32732132" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -439,29 +425,39 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py</url>
-          <line>150</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py</url>
-          <line>107</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/AutoEncoder/ConvAutoEncoder.py</url>
           <line>19</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FrameExtractor/FrameExtract.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FrameExtractor/FrameExtract.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="60" />
+          <line>14</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ModelRunner/TrainingEngine.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py</url>
+          <line>116</line>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -479,56 +475,48 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>self.image_depth_after_rescale</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video + &quot;%.4f.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>input_matrix.reshape(self.hyper_params.number_of_images,
-                                                     self.image_width_after_rescale,
-                                                     self.image_height_after_rescale,
-                                                     self.image_depth_after_rescale)</expression-string>
+        <expression-string>cv2.resize(image_to_alter, (self.hyper_params.pixel_resize_value, self.hyper_params.pixel_resize_value))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>input_matrix</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video +
+                               &quot;%.4f.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>input_matrix.reshape(self.hyper_params.number_of_images, -1)</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video + &quot;%f.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>plt.show()</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video + &quot;%3f.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.prepare_single_image(image)</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video + &quot;%4f.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.reformat_auto_encoder_format(self.prepare_single_image(image))</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video + &quot;%4d.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>trained_model.predict(self.prepare_single_image(image).reshape(1,
-                                                                               self.image_width_after_rescale,
-                                                                               self.image_height_after_rescale,
-                                                                               self.image_depth_after_rescale))</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video + &quot;%3d.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>trained_model.predict(self.prepare_single_image(image).reshape(1,
-                                                                               self.image_width_after_rescale,
-                                                                               self.image_height_after_rescale,
-                                                                               self.image_depth_after_rescale)))</expression-string>
+        <expression-string>self.hyper_params.file_path_for_frames + self.hyper_params.original_video + &quot;3f.jpg&quot; % (.0001 * i * self.hyper_params.frame_skipping_factor)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -562,33 +550,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame159.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame158.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame157.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame131.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame130.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame129.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame11.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame62.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame63.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/FrameExtractor/tmp/Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame132.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -737,13 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FrameExtractor/FrameExtract.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skimage/transform/_warps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
@@ -793,10 +747,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AutoEncoder/ImageManipulationType.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/Animations/Synfig Animation 2.0114.png" />
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/Animations/Synfig Animation 2.0000.jpg" />
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/Animations/Synfig Animation 2.0040.jpg" />
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/Animations/Synfig Animation 2.0043.jpg" />
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/Animations/Synfig Animation 2.0070.jpg" />
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/Animations/Synfig Animation .0000.jpg" />
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/Animations/Synfig Animation.0060.jpg" />
+    <entry file="file://$PROJECT_DIR$/FrameExtractor/FrameExtract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/keras/optimizers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="480" column="74" selection-start-line="480" selection-start-column="74" selection-end-line="480" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AutoEncoder/FullyConvolutionalAutoEncoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="255">
+          <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="45" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
@@ -812,42 +794,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AutoEncoder/FullyConnectedAutoEncoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        <state relative-caret-position="319">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
           <folding>
-            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/keras/engine/saving.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="29" column="56" lean-forward="true" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AutoEncoder/ImageManipulationType.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="321">
+          <caret line="387" column="4" selection-start-line="387" selection-start-column="4" selection-end-line="387" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AutoEncoder/AutoEncoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+        <state relative-caret-position="972">
+          <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ModelRunner/ModelHyperParameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ModelRunner/TrainingEngine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+        <state relative-caret-position="416">
+          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

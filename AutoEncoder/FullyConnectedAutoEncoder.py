@@ -1,3 +1,5 @@
+from keras.optimizers import Adam
+
 from AutoEncoder.AutoEncoder import AutoEncoder
 from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, BatchNormalization, LeakyReLU, Add
 from keras import regularizers
@@ -16,13 +18,13 @@ class FullyConnectedAutoEncoder(AutoEncoder):
                                    self.image_depth_after_rescale))
         encoded = Flatten()(input_image)
         encoded = Dense(flattened_vector_size,
-                        activation='relu', kernel_initializer=self.get_initializer())(encoded)
-        encoded = Dense(int (flattened_vector_size * .1),
-                        activation= 'relu',
+                        activation='linear', kernel_initializer=self.get_initializer())(encoded)
+        encoded = Dense(int (flattened_vector_size * .2),
+                        activation= 'linear',
                         kernel_initializer= self.get_initializer())(encoded)
         decoded = Dense(flattened_vector_size,
-                        activation='relu', kernel_initializer=self.get_initializer())(encoded)
+                        activation='linear', kernel_initializer=self.get_initializer())(encoded)
         auto_encoder = Model(input_image, decoded)
-        auto_encoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['binary_crossentropy'])
+        auto_encoder.compile(optimizer=Adam(lr=1e-4, decay=.001), loss='mean_squared_error', metrics=['binary_crossentropy'])
         print(auto_encoder.summary())
         return auto_encoder

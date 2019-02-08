@@ -69,18 +69,27 @@ class AutoEncoder:
             self.image_depth_after_rescale = input_image.shape[2]
 
     def init_training_matrix(self):
-        input_matrix = None
-        for i in range(self.hyper_params.number_of_images):
-            image = cv2.imread(self.hyper_params.file_path_for_frames + self.hyper_params.original_video + "frame%d.jpg" % (300 + i * self.hyper_params.frame_skipping_factor), 0)
+        return self.init_image_matrix(self.hyper_params.original_video, self.hyper_params.number_of_images,
+                                      self.hyper_params.frame_skipping_factor)
+
+    def init_validation_matrix(self):
+        return self.init_image_matrix(self.hyper_params.original_validation_video, self.hyper_params.number_of_images,
+                                      self.hyper_params.frame_skipping_factor)
+
+    def init_image_matrix(self, video_name, number_of_frames, skipping_factor):
+        matrix = None
+        for i in range(number_of_frames):
+            image = cv2.imread(self.hyper_params.file_path_for_frames + video_name +
+                               "%.4f.jpg" % (.0001 * i * skipping_factor), 0)
             image = self.prepare_single_image(image)
             if i == 0:
                 self.save_original_dims(image)
-                input_matrix = numpy.empty([self.hyper_params.number_of_images,
+                matrix = numpy.empty([self.hyper_params.number_of_images,
                                             self.image_width_after_rescale,
                                             self.image_height_after_rescale,
                                             self.image_depth_after_rescale])
-            input_matrix[i, :, :, :] = image
-        return input_matrix
+            matrix[i, :, :, :] = image
+        return matrix
 
     def prepare_single_image(self, image):
         image = self.rescaler(image)
@@ -130,7 +139,8 @@ class AutoEncoder:
         i = 3
         fig, ax = plt.subplots(3, 3)
         for x in range(i):
-            image = cv2.imread(self.hyper_params.file_path_for_frames + self.hyper_params.original_video + "frame%d.jpg" % (300 + x * 100), 0)
+            image = cv2.imread(self.hyper_params.file_path_for_frames +
+                               self.hyper_params.original_video + "%.4f.jpg" % (x * .0001), 0)
             ax[x][0].set_title("Original Image", fontsize=12)
             ax[x][0].imshow(image)
             ax[x][0].set_axis_off()
@@ -162,11 +172,6 @@ class AutoEncoder:
     def inverse_rescaler(self, image_to_alter):
         return image_to_alter
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
-
-
-
-
-
 
 
 

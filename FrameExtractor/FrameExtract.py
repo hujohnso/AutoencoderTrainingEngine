@@ -30,7 +30,7 @@ def split_video_into_frames_and_save_pngs(filePath):
         count += 1
 
 if __name__ == "__main__":
-    filePath = "./tmp"
+    filePath = "./tmp2"
     delete_folder_and_create_new_empty_folder(filePath)
     filePath = download_and_save_video(filePath)
     split_video_into_frames_and_save_pngs(filePath)
