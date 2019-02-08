@@ -1,4 +1,4 @@
-.idea/vcs.xml
+.idea/
 AutoEncoder/__pycache__/*
 FrameExtractor/Animations/*
 ModelRunner/*
