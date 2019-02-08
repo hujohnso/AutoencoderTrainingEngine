@@ -1,7 +1,7 @@
 .idea/vcs.xml
-AutoEncoder/__pycache__/
-FrameExtractor/Animations/
-ModelRunner/
-saved_models/
-tensor_board_models/
-venv/
+AutoEncoder/__pycache__/*
+FrameExtractor/Animations/*
+ModelRunner/*
+saved_models/*
+tensor_board_models/*
+venv/*
