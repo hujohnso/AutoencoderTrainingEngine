@@ -80,7 +80,7 @@ class AutoEncoder:
         matrix = None
         for i in range(number_of_frames):
             image = cv2.imread(self.hyper_params.file_path_for_frames + video_name +
-                               "%.4f.jpg" % (.0001 * i * skipping_factor), 0)
+                               "%.4f.jpg" % (.0001 * i * skipping_factor), self.get_image_read_parameter())
             image = self.prepare_single_image(image)
             if i == 0:
                 self.save_original_dims(image)
@@ -90,6 +90,14 @@ class AutoEncoder:
                                             self.image_depth_after_rescale])
             matrix[i, :, :, :] = image
         return matrix
+
+    def get_image_read_parameter(self):
+        im_read_color_parameter = None
+        if self.hyper_params.as_gray:
+            im_read_color_parameter = 0
+        else:
+            im_read_color_parameter = 1
+        return im_read_color_parameter
 
     def prepare_single_image(self, image):
         image = self.rescaler(image)
@@ -144,12 +152,14 @@ class AutoEncoder:
                 image = cv2.imread(self.hyper_params.file_path_for_frames +
                                    self.hyper_params.original_video +
                                    "%.4f.jpg" % ((x * .0001 * (self.hyper_params.number_of_images / 5)) +
-                                                 self.hyper_params.starting_frame_for_visualize), 0)
+                                                 self.hyper_params.starting_frame_for_visualize),
+                                   self.get_image_read_parameter())
             else:
                 image = cv2.imread(self.hyper_params.file_path_for_frames +
                                    self.hyper_params.original_validation_video +
                                    "%.4f.jpg" % (((x - (.5 * i)) * .0001 * (self.hyper_params.number_of_images / 5)) +
-                                                 self.hyper_params.starting_frame_for_visualize), 0)
+                                                 self.hyper_params.starting_frame_for_visualize),
+                                   self.get_image_read_parameter())
             ax[x][0].set_title("Original Image", fontsize=12)
             ax[x][0].imshow(image)
             ax[x][0].set_axis_off()
