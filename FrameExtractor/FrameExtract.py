@@ -12,28 +12,33 @@ def delete_folder_and_create_new_empty_folder(filePath):
 
 
 def download_and_save_video(filePath):
-    bunnyVideo = YouTube("https://www.youtube.com/watch?v=goSVynBVnLs")
-    bunnyVideo = bunnyVideo.streams.first()
+    video = YouTube("https://www.youtube.com/watch?v=aGE39IsemFw")
+    video = video.streams.first()
     filePath = filePath + "/"
-    bunnyVideo.download(filePath)
-    return filePath + bunnyVideo.default_filename
+    video.download(filePath)
+    return filePath + video.default_filename
 
 
-def split_video_into_frames_and_save_pngs(filePath):
-    vidcap = cv2.VideoCapture(filePath)
+def split_video_into_frames_and_save_pngs(video_file_path, filePath):
+    vidcap = cv2.VideoCapture(video_file_path)
     success, image = vidcap.read()
     count = 0
+    frame_count = 1
+    number_of_frames_in_between = 10
     while success:
-        cv2.imwrite(filePath + "frame%d.jpg" % count, image)
+        if frame_count % number_of_frames_in_between == 0:
+            cv2.imwrite(filePath + "training_video%.4f.jpg" % (.0001 * count), image)
+            count += 1
         success, image = vidcap.read()
         print('Read a new frame: ', success)
-        count += 1
+        frame_count += 1
+
 
 if __name__ == "__main__":
-    filePath = "./tmp2"
+    filePath = "./tmp"
     delete_folder_and_create_new_empty_folder(filePath)
-    filePath = download_and_save_video(filePath)
-    split_video_into_frames_and_save_pngs(filePath)
+    video_file_path = download_and_save_video(filePath)
+    split_video_into_frames_and_save_pngs(video_file_path, filePath + "/")
 
 
 

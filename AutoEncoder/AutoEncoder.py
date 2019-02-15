@@ -113,12 +113,12 @@ class AutoEncoder:
         image = self.inverse_rescaler(image_matrix)
         return image
 
-    def train(self, input_matrix, model):
+    def train(self, input_matrix, model, validation_matrix):
         model.fit(input_matrix, input_matrix.reshape(self.hyper_params.number_of_images, -1),
                   epochs=self.hyper_params.number_of_epochs_for_training,
                   batch_size=self.hyper_params.batch_size,
                   shuffle=True,
-                  validation_data=(input_matrix, input_matrix.reshape(self.hyper_params.number_of_images, -1)),
+                  validation_data=(validation_matrix, validation_matrix.reshape(self.hyper_params.number_of_images,-1)),
                   callbacks=[TensorBoard(log_dir=self.hyper_params.tensor_board_directory,
                                          histogram_freq=0,
                                          write_graph=True,
@@ -136,11 +136,20 @@ class AutoEncoder:
             return self.create_auto_encoder(input_image_vector)
 
     def visualize(self, trained_model):
-        i = 3
-        fig, ax = plt.subplots(3, 3)
+        i = 2
+        fig, ax = plt.subplots(i, 3)
         for x in range(i):
-            image = cv2.imread(self.hyper_params.file_path_for_frames +
-                               self.hyper_params.original_video + "%.4f.jpg" % (x * .0001), 0)
+            image = None
+            if x < i * .5:
+                image = cv2.imread(self.hyper_params.file_path_for_frames +
+                                   self.hyper_params.original_video +
+                                   "%.4f.jpg" % ((x * .0001 * (self.hyper_params.number_of_images / 5)) +
+                                                 self.hyper_params.starting_frame_for_visualize), 0)
+            else:
+                image = cv2.imread(self.hyper_params.file_path_for_frames +
+                                   self.hyper_params.original_validation_video +
+                                   "%.4f.jpg" % (((x - (.5 * i)) * .0001 * (self.hyper_params.number_of_images / 5)) +
+                                                 self.hyper_params.starting_frame_for_visualize), 0)
             ax[x][0].set_title("Original Image", fontsize=12)
             ax[x][0].imshow(image)
             ax[x][0].set_axis_off()
@@ -170,7 +179,8 @@ class AutoEncoder:
             return image_to_alter
 
     def inverse_rescaler(self, image_to_alter):
-        return image_to_alter
+        return cv2.resize(image_to_alter, (self.hyper_params.pixel_resize_for_visualize,
+                          self.hyper_params.pixel_resize_for_visualize))
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
 
 

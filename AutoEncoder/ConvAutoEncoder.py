@@ -14,7 +14,6 @@ from keras.callbacks import TensorBoard
 class ConvAutoEncoder(AutoEncoder):
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
-    # selbeleidy@mymail.mines.edu
 
     def create_auto_encoder(self, input_image_vector):
         flattened_vector_size = self.image_width_after_rescale * self.image_height_after_rescale * self.image_depth_after_rescale

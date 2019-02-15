@@ -19,12 +19,18 @@ class FullyConnectedAutoEncoder(AutoEncoder):
         encoded = Flatten()(input_image)
         encoded = Dense(flattened_vector_size,
                         activation='linear', kernel_initializer=self.get_initializer())(encoded)
-        encoded = Dense(int (flattened_vector_size * .2),
+        encoded = Dense(int (flattened_vector_size * .15),
                         activation= 'linear',
                         kernel_initializer= self.get_initializer())(encoded)
         decoded = Dense(flattened_vector_size,
                         activation='linear', kernel_initializer=self.get_initializer())(encoded)
         auto_encoder = Model(input_image, decoded)
-        auto_encoder.compile(optimizer=Adam(lr=1e-4, decay=.001), loss='mean_squared_error', metrics=['binary_crossentropy'])
+        if self.hyper_params.adam_specify_learning_rate:
+            auto_encoder.compile(optimizer=Adam(lr=self.hyper_params.adam_specify_learning_rate,
+                                                decay=self.hyper_params.adam_specify_learning_rate),
+                                 loss='mean_squared_error',
+                                 metrics=['binary_crossentropy'])
+        else:
+            auto_encoder.compile(optimizer='Adam', loss='mean_squared_error', metrics=['binary_crossentropy'])
         print(auto_encoder.summary())
         return auto_encoder
