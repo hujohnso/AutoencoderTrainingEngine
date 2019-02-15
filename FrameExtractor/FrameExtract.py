@@ -24,7 +24,7 @@ def split_video_into_frames_and_save_pngs(video_file_path, filePath):
     success, image = vidcap.read()
     count = 0
     frame_count = 1
-    number_of_frames_in_between = 10
+    number_of_frames_in_between = 1
     while success:
         if frame_count % number_of_frames_in_between == 0:
             cv2.imwrite(filePath + "training_video%.4f.jpg" % (.0001 * count), image)
