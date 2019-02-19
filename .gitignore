@@ -2,6 +2,7 @@
 AutoEncoder/__pycache__/*
 FrameExtractor/Animations/*
 saved_models/*
+!saved_models/.gitkeep
 tensor_board_models/*
 venv/*
 tmp/
