@@ -4,6 +4,7 @@ FrameExtractor/Animations/*
 saved_models/*
 tensor_board_models/*
 venv/*
+tmp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
