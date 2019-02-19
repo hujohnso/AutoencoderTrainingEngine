@@ -17,7 +17,7 @@ def stopping_fun(x):
     return 1. / (1. + norm(grad(x))**2)
 
 
-img = io.imread('Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame235.jpg')
+img = io.imread('')
 img = color.rgb2gray(img)
 img = img - np.mean(img)
 

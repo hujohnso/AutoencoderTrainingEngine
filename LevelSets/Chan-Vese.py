@@ -4,7 +4,7 @@ from skimage import data, img_as_float
 from skimage.segmentation import chan_vese
 
 
-image = img_as_float(data.load("Cute Baby Holland Lop Bunnies Playing Inside the House.mp4frame235.jpg",as_gray=True))
+image = img_as_float(data.load("",as_gray=True))
 # image = img_as_float(data.load("goldenRetriever1.png",as_gray=True))
 #image = img_as_float(data.astronaut())
 # Feel free to play around with the parameters to see how they impact the result
