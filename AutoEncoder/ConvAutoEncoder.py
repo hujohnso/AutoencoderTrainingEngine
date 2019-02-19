@@ -10,7 +10,7 @@ from skimage import data, img_as_float, img_as_int
 from skimage.transform import rescale
 from keras.callbacks import TensorBoard
 
-
+#
 class ConvAutoEncoder(AutoEncoder):
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
