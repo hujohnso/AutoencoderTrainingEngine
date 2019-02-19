@@ -4,6 +4,7 @@ FrameExtractor/Animations/*
 saved_models/*
 !saved_models/.gitkeep
 tensor_board_models/*
+!tensor_board_models/.gitkeep
 venv/*
 tmp/
 
