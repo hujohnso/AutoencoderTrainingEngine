@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
 
 # Make code pullable
-# Git hub git ignore and choose python
+# Git hub git ignore and choose python: DONE
 # .env
 # Select 10 videos and train against all them
 # Try hyperbolic tangent
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 # Auto encoder non image data (not text) high dimention, didgets, mnist
 # Get a cnn with mnist
 # Fridays at noon
-# pip freeze
+# pip freeze: DONE
 # Get working with pre loaded datasets
 
 
