@@ -2,7 +2,7 @@ import gzip
 
 import cv2
 from keras.engine.saving import load_model
-from keras.initializers import RandomUniform, Zeros, Constant, SparceInitializer
+from keras.initializers import RandomUniform, Zeros, Constant
 import abc
 from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, BatchNormalization, LeakyReLU, Add
 from keras import regularizers
