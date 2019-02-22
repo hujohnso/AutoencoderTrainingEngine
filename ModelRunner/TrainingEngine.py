@@ -60,26 +60,25 @@ if __name__ == "__main__":
 # Make code pullable
 # Git hub git ignore and choose python: DONE
 # .env
-# Select 10 videos and train against all them
+# Select 10 videos and train against all them: ON its way
 # Try hyperbolic tangent
 # Try exponential
 # Co lab
 
 # Install tensorflow GPU
 # requirements / pip file to show what dependencies to download: DONE
-# Automate the video training to have a validation set
+# Automate the video training to have a validation set: DONE
 # Auto encoder non image data (not text) high dimention, didgets, mnist
 # Get a cnn with mnist
 # Fridays at noon
 # pip freeze: DONE
 # Get working with pre loaded datasets
-# Make the image pulling more durable and useful to prepare for using many different datasets with little
+# Make the image pulling more durable and useful to prepare for using many different datasets with little: DONE
 
 
 
 #Before help
     #Set up hyperparmaters have different configurations to quickly switch out
-    #Allow for switching switching
 
 
 #Questions:
