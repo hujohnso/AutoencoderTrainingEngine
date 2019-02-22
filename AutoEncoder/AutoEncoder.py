@@ -74,7 +74,7 @@ class AutoEncoder:
 
     def init_validation_matrix(self):
         return self.init_image_matrix(self.hyper_params.file_path_for_validation_set,
-                                      self.hyper_params.number_of_images)
+                                      self.hyper_params.number_of_images_for_validation)
 
     def init_image_matrix(self, folder_with_images, number_of_frames):
         matrix = None

@@ -18,11 +18,8 @@ class ModelHyperParameters:
     image_depth = 3
 
     as_gray = True
-    original_video = "squareMovingTopRightToTopLeft"
     number_of_images = 120
-    original_validation_video = "squareMovingTopLeftToBottomRight"
     number_of_images_for_validation = 120
-    test_image_name = "Synfig Animation.0060.jpg"
     model_name = "my_model.h5"
     working_model_path = base_file_path + "saved_models/" + model_name
     tensor_board_directory = base_file_path + "tensor_board_models"
@@ -51,8 +48,6 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
     batch_size = 120
     starting_frame_for_visualize = .0060
     file_path_for_frames = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/"
-    original_video = "training_video"
-    original_validation_video = "training_video"
     #converged down very well
     #model_name = "real_image_model_grey.h5"
     model_name = "real_image_model_grey_num_images_120.h5"
@@ -72,9 +67,6 @@ class ModelHyperParametersRealImagesColor(ModelHyperParameters):
     number_of_images = 10
     batch_size = 10
     file_path_for_frames = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/"
-    original_video = "training_video"
-    original_validation_video = "training_video"
-    test_image_name = "training_video0.0080.jpg"
     model_name = "real_image_model_color.h5"
     load_model = False
     as_gray = False
@@ -92,11 +84,8 @@ class ModelHyperParametersAnimationGrey(ModelHyperParameters):
     number_of_epochs_for_training = 200
     batch_size = 30
     as_gray = True
-    original_video = "squareMovingTopRightToTopLeft"
     number_of_images = 120
-    original_validation_video = "squareMovingTopLeftToBottomRight"
     number_of_images_for_validation = 120
-    test_image_name = "Synfig Animation.0060.jpg"
     model_name = "animation_grey.h5"
     load_model = False
     file_path_for_validation_set = ModelHyperParameters.base_file_path + ""

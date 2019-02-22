@@ -35,25 +35,24 @@ if __name__ == "__main__":
     run_all_steps(auto_encoder)
 
 #Next coding steps:
-# Make a dev and test set to compare error: No test but dev atleast :)
+# Make a dev and test set to compare error: DONE
 # Link frame extractor to the training engine (Parameterize this guy)
-# Make a simple video to have an easy case
+# Make a simple video to have an easy case: DONE
     #Investigate how you actutally want to do this.
 # Program a shitty version of my idea
 # Get U-net working: DONE
 # Get U-net performing
 # Figure out how to get the activated neron
 # Parameterize the black and white better: DONE
-# Figure out how to run this on the cluster that Saad told me about.
+# Figure out how to run this on the cluster that Saad told me about: DONE
 # Make it easy to switch out videos
 # Learn how to use tensorboard
 # Look into learning rate decay better
-# Make a seperate video for testing the auto encoder
-# Make allow the framework to test against that ^
+# Make allow the framework to have a validation set
 # Fix the bull shit on github: DONE
 # Make a Fully convolutional network that isn't as huge as U-Net
-# Set recipe configurations to make switching
-# Make visualize show validation set too
+# Set recipe configurations to make switching: DONE
+# Make visualize show validation set too: DONE
 # Make a method to use the model for visualizing without re-training
 # Make the vectors into an objects so we know what the original images were trained on
 
