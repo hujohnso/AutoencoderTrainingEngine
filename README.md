@@ -1,4 +1,4 @@
-Steps to run this code:
+#Steps to pull and prepare code for running:
 
 The following is a description of how to run in pycharm but should contain the necessary steps to get this code running anywhere.
 
@@ -8,7 +8,7 @@ The following is a description of how to run in pycharm but should contain the n
 
 -Step 3: Now clone the project to the location of your choice "git clone https://github.com/hujohnso/research.git"
 
--Step 4: Open top level folder in the cloned directory research in pycharm
+-Step 4: Open top level folder in the cloned directory 'research' in pycharm as the root of a existing project.
 
 -Step 5: Set your project interpreter to python3.6 file->settings->project: research->ProjectInterpreter-> set the Project Intrepreter dropdown to python3.6
 
@@ -17,3 +17,12 @@ The following is a description of how to run in pycharm but should contain the n
 -Step7: Install all the necessary packages by running 'pip install -r requirements.txt from your terminal.
 
 -Step8: In that same terminal run 'sudo apt-get install python3-tk'
+
+
+
+#Configuration:
+
+-Configuration for training models is in ModelRunner/ModelHyperParameters 
+-To train you must first retrieve the images necessary.  These are retrieved by running
+ the main function in FrameRunner/FrameExtract.py
+ -The training code is run by running

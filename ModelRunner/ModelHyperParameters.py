@@ -7,8 +7,10 @@ class ModelHyperParameters:
     def __init__(self):
         pass
 
-    base_file_path = "/home/hujohnso/Documents/Research2018/"
+    base_file_path = "../"
     file_path_for_frames = base_file_path + "FrameExtractor/Animations/"
+    file_path_for_validation_set = base_file_path + ""
+    file_path_for_training_set = base_file_path + ""
     number_of_epochs_for_training = 20
     batch_size = 30
     image_width_after_rescale: int
@@ -25,7 +27,6 @@ class ModelHyperParameters:
     working_model_path = base_file_path + "saved_models/" + model_name
     tensor_board_directory = base_file_path + "tensor_board_models"
     load_model = False
-    frame_skipping_factor = 1
     starting_frame_for_visualize = .0040
 
     # These parameters tell you what type of rescaling you would like to do
@@ -48,7 +49,6 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
     number_of_epochs_for_training = 10
     number_of_images = 120
     batch_size = 120
-    frame_skipping_factor = 1
     starting_frame_for_visualize = .0060
     file_path_for_frames = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/"
     original_video = "training_video"
@@ -61,6 +61,8 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
     adam_specify_learning_rate = True
     adam_alpha = 1e-4
     adam_decay_rate = .001
+    file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp"
+    file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp"
 
 
 class ModelHyperParametersRealImagesColor(ModelHyperParameters):
@@ -79,6 +81,8 @@ class ModelHyperParametersRealImagesColor(ModelHyperParameters):
     adam_specify_learning_rate = True
     adam_alpha = 1e-1
     adam_decay_rate = .0001
+    file_path_for_validation_set = ModelHyperParameters.base_file_path + ""
+    file_path_for_training_set = ModelHyperParameters.base_file_path + ""
 
 
 class ModelHyperParametersAnimationGrey(ModelHyperParameters):
@@ -95,6 +99,8 @@ class ModelHyperParametersAnimationGrey(ModelHyperParameters):
     test_image_name = "Synfig Animation.0060.jpg"
     model_name = "animation_grey.h5"
     load_model = False
+    file_path_for_validation_set = ModelHyperParameters.base_file_path + ""
+    file_path_for_training_set = ModelHyperParameters.base_file_path + ""
 
 
 

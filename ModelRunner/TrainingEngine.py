@@ -1,16 +1,18 @@
 import time
 
 from AutoEncoder import FullyConnectedAutoEncoder
-from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor
+from AutoEncoder.ConvFullyConnectedUpConv import ConvFullyConnectedUpConv
+from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, ModelHyperParametersRealImagesGray
 
 # hyper_parameters = ModelHyperParameters()
-#hyper_parameters = ModelHyperParametersRealImagesGray()
-hyper_parameters = ModelHyperParametersRealImagesColor()
+hyper_parameters = ModelHyperParametersRealImagesGray()
+# hyper_parameters = ModelHyperParametersRealImagesColor()
 #hyper_parameters = ModelHyperParametersAnimationGrey()
 
+# auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
 auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
 # auto_encoder = ConvAutoEncoder.ConvAutoEncoder(hyper_parameters)
-# auto_encoder = FullyConvolutionalAutoEncoder(hyper_parameters)
+# auto_encoder = Unet()
 
 
 def timer(executable, function_executed):
@@ -65,13 +67,14 @@ if __name__ == "__main__":
 # Co lab
 
 # Install tensorflow GPU
-# requirements / pip file to show what dependencies to download
+# requirements / pip file to show what dependencies to download: DONE
 # Automate the video training to have a validation set
 # Auto encoder non image data (not text) high dimention, didgets, mnist
 # Get a cnn with mnist
 # Fridays at noon
 # pip freeze: DONE
 # Get working with pre loaded datasets
+# Make the image pulling more durable and useful to prepare for using many different datasets with little
 
 
 
@@ -81,12 +84,8 @@ if __name__ == "__main__":
 
 
 #Questions:
- #Does it make sense that static comes from relu activations?
- #Why does it struggle with more images and how do I combat this?
- #Can an autoEncoder match the same object in different places with out data agumentation.
- #What was the web site to run on the cluster for free
- #What are the important parts of tensorboard for me to know?
- #Is it correct to say that if my loss isn't converging then the network isn't deep enough?
+    #Does the exploding gradients/ near zero gradients which leads residual networks affect gradient updates
+
 
 
 

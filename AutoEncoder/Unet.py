@@ -10,7 +10,7 @@ class FullyConvolutionalAutoEncoder(AutoEncoder):
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
 
-    def create_auto_encoder(self, input_image_vector):
+    def create_autoencoder(self, input_image_vector):
         input_image = Input(shape=(self.image_width_after_rescale,
                                    self.image_height_after_rescale,
                                    self.image_depth_after_rescale))
@@ -67,12 +67,12 @@ class FullyConvolutionalAutoEncoder(AutoEncoder):
 
         return model
 
-    def train(self, input_matrix, model):
+    def train(self, input_matrix, model, validation_matrix):
         model.fit(input_matrix, input_matrix,
                   epochs=self.hyper_params.number_of_epochs_for_training,
                   batch_size=self.hyper_params.batch_size,
                   shuffle=True,
-                  validation_data=(input_matrix, input_matrix),
+                  validation_data=(validation_matrix, validation_matrix),
                   callbacks=[TensorBoard(log_dir=self.hyper_params.tensor_board_directory,
                                          histogram_freq=0,
                                          write_graph=True,

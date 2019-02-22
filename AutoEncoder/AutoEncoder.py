@@ -54,7 +54,7 @@ class AutoEncoder:
         # return RandomUniform(minval=.001, maxval=.1, seed=None)
 
     @abc.abstractmethod
-    def create_auto_encoder(self, input_image_vector):
+    def create_autoencoder(self, input_image_vector):
         return
 
     def save_original_dims(self, input_image):
@@ -69,26 +69,35 @@ class AutoEncoder:
             self.image_depth_after_rescale = input_image.shape[2]
 
     def init_training_matrix(self):
-        return self.init_image_matrix(self.hyper_params.original_video, self.hyper_params.number_of_images,
-                                      self.hyper_params.frame_skipping_factor)
+        return self.init_image_matrix(self.hyper_params.file_path_for_training_set,
+                                      self.hyper_params.number_of_images)
 
     def init_validation_matrix(self):
-        return self.init_image_matrix(self.hyper_params.original_validation_video, self.hyper_params.number_of_images,
-                                      self.hyper_params.frame_skipping_factor)
+        return self.init_image_matrix(self.hyper_params.file_path_for_validation_set,
+                                      self.hyper_params.number_of_images)
 
-    def init_image_matrix(self, video_name, number_of_frames, skipping_factor):
+    def init_image_matrix(self, folder_with_images, number_of_frames):
         matrix = None
-        for i in range(number_of_frames):
-            image = cv2.imread(self.hyper_params.file_path_for_frames + video_name +
-                               "%.4f.jpg" % (.0001 * i * skipping_factor), self.get_image_read_parameter())
-            image = self.prepare_single_image(image)
-            if i == 0:
-                self.save_original_dims(image)
-                matrix = numpy.empty([self.hyper_params.number_of_images,
-                                            self.image_width_after_rescale,
-                                            self.image_height_after_rescale,
-                                            self.image_depth_after_rescale])
-            matrix[i, :, :, :] = image
+        skipping_factor = len(cv2.os.listdir(folder_with_images)) / number_of_frames
+        num_in_matrix = 0
+        image_number = 0
+        for filename in cv2.os.listdir(folder_with_images):
+            if not filename.endswith(".jpg"):
+                continue
+            if num_in_matrix == number_of_frames:
+                break
+            if image_number % skipping_factor == 0:
+                image = cv2.imread(folder_with_images + "/" + filename, self.get_image_read_parameter())
+                image = self.prepare_single_image(image)
+                if num_in_matrix == 0:
+                    self.save_original_dims(image)
+                    matrix = numpy.empty([self.hyper_params.number_of_images,
+                                          self.image_width_after_rescale,
+                                          self.image_height_after_rescale,
+                                          self.image_depth_after_rescale])
+                matrix[num_in_matrix, :, :, :] = image
+                num_in_matrix += 1
+            image_number += 1
         return matrix
 
     def get_image_read_parameter(self):
@@ -126,7 +135,8 @@ class AutoEncoder:
                   epochs=self.hyper_params.number_of_epochs_for_training,
                   batch_size=self.hyper_params.batch_size,
                   shuffle=True,
-                  validation_data=(validation_matrix, validation_matrix.reshape(self.hyper_params.number_of_images,-1)),
+                  validation_data=(
+                  validation_matrix, validation_matrix.reshape(self.hyper_params.number_of_images, -1)),
                   callbacks=[TensorBoard(log_dir=self.hyper_params.tensor_board_directory,
                                          histogram_freq=0,
                                          write_graph=True,
@@ -141,7 +151,7 @@ class AutoEncoder:
         if self.hyper_params.load_model:
             return load_model(self.hyper_params.working_model_path)
         else:
-            return self.create_auto_encoder(input_image_vector)
+            return self.create_autoencoder(input_image_vector)
 
     def visualize(self, trained_model):
         i = 2
@@ -149,17 +159,9 @@ class AutoEncoder:
         for x in range(i):
             image = None
             if x < i * .5:
-                image = cv2.imread(self.hyper_params.file_path_for_frames +
-                                   self.hyper_params.original_video +
-                                   "%.4f.jpg" % ((x * .0001 * (self.hyper_params.number_of_images / 5)) +
-                                                 self.hyper_params.starting_frame_for_visualize),
-                                   self.get_image_read_parameter())
+                image = self.get_random_image_for_visualize(self.hyper_params.file_path_for_training_set)
             else:
-                image = cv2.imread(self.hyper_params.file_path_for_frames +
-                                   self.hyper_params.original_validation_video +
-                                   "%.4f.jpg" % (((x - (.5 * i)) * .0001 * (self.hyper_params.number_of_images / 5)) +
-                                                 self.hyper_params.starting_frame_for_visualize),
-                                   self.get_image_read_parameter())
+                image = self.get_random_image_for_visualize(self.hyper_params.file_path_for_validation_set)
             ax[x][0].set_title("Original Image", fontsize=12)
             ax[x][0].imshow(image)
             ax[x][0].set_axis_off()
@@ -179,37 +181,23 @@ class AutoEncoder:
         fig.tight_layout()
         plt.show()
 
+    def get_random_image_for_visualize(self, folder_containing_images):
+        list_of_images = cv2.os.listdir(folder_containing_images)
+        image_name = ""
+        while not image_name.endswith(".jpg"):
+            image_name = list_of_images[rand.randint(0, len(list_of_images))]
+        return cv2.imread(folder_containing_images + "/" + image_name, self.get_image_read_parameter())
+
     def rescaler(self, image_to_alter):
         if self.hyper_params.type_of_transformation == ImageManipulationType.PIXEL:
             return cv2.resize(image_to_alter,
                               (self.hyper_params.pixel_resize_value, self.hyper_params.pixel_resize_value))
         elif self.hyper_params.type_of_transformation == ImageManipulationType.RATIO:
-            return  rescale(image_to_alter, self.hyper_params.image_rescale_value, anti_aliasing=False)
+            return rescale(image_to_alter, self.hyper_params.image_rescale_value, anti_aliasing=False)
         elif self.hyper_params.type_of_transformation == ImageManipulationType.NONE:
             return image_to_alter
 
     def inverse_rescaler(self, image_to_alter):
         return cv2.resize(image_to_alter, (self.hyper_params.pixel_resize_for_visualize,
-                          self.hyper_params.pixel_resize_for_visualize))
+                                           self.hyper_params.pixel_resize_for_visualize))
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
