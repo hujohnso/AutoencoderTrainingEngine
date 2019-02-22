@@ -1,3 +1,5 @@
+import gzip
+
 import cv2
 from keras.engine.saving import load_model
 from keras.initializers import RandomUniform, Zeros, Constant, SparceInitializer
@@ -201,3 +203,4 @@ class AutoEncoder:
         return cv2.resize(image_to_alter, (self.hyper_params.pixel_resize_for_visualize,
                                            self.hyper_params.pixel_resize_for_visualize))
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
+

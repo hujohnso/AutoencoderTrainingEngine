@@ -1,5 +1,4 @@
 
-
 from AutoEncoder.ImageManipulationType import ImageManipulationType
 
 
@@ -42,22 +41,21 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
     def __init__(self):
         super().__init__()
 
-    #This one has pretty good resutlts
-    number_of_epochs_for_training = 10
-    number_of_images = 120
-    batch_size = 120
-    starting_frame_for_visualize = .0060
-    file_path_for_frames = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/"
-    #converged down very well
-    #model_name = "real_image_model_grey.h5"
+    # This one has pretty good resutlts
+    number_of_epochs_for_training = 1500
+    number_of_images = 500
+    number_of_images_for_validation = 100
+    batch_size = 60
+    # converged down very well
+    # model_name = "real_image_model_grey.h5"
     model_name = "real_image_model_grey_num_images_120.h5"
     load_model = False
     pixel_resize_value = 64
     adam_specify_learning_rate = True
-    adam_alpha = 1e-4
+    adam_alpha = 1e-2
     adam_decay_rate = .001
-    file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp"
-    file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp"
+    file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
+    file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/train"
 
 
 class ModelHyperParametersRealImagesColor(ModelHyperParameters):
@@ -66,7 +64,6 @@ class ModelHyperParametersRealImagesColor(ModelHyperParameters):
     number_of_epochs_for_training = 1000
     number_of_images = 10
     batch_size = 10
-    file_path_for_frames = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/"
     model_name = "real_image_model_color.h5"
     load_model = False
     as_gray = False
@@ -80,7 +77,6 @@ class ModelHyperParametersRealImagesColor(ModelHyperParameters):
 class ModelHyperParametersAnimationGrey(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-    file_path_for_frames = ModelHyperParameters.base_file_path + "FrameExtractor/Animations/"
     number_of_epochs_for_training = 200
     batch_size = 30
     as_gray = True
@@ -92,33 +88,19 @@ class ModelHyperParametersAnimationGrey(ModelHyperParameters):
     file_path_for_training_set = ModelHyperParameters.base_file_path + ""
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class ModelHyperParametersMNIST(ModelHyperParameters):
+    def __init__(self):
+        super().__init__()
+    number_of_epochs_for_training = 200
+    batch_size = 30
+    as_gray = True
+    number_of_images = 60000
+    number_of_images_for_validation = 10000
+    model_name = "mnist_model.h5"
+    load_model = False
+    file_path_for_validation_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mniszt_jpgfiles/train"
+    file_path_for_training_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mniszt_jpgfiles/test"
+    type_of_transformation = ImageManipulationType.PIXEL
+    image_rescale_value = 1.0 / 25
+    pixel_resize_value = 64
+    pixel_resize_for_visualize = 64

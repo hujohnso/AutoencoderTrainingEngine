@@ -19,7 +19,7 @@ class FullyConnectedAutoEncoder(AutoEncoder):
         encoded = Flatten()(input_image)
         encoded = Dense(flattened_vector_size,
                         activation='linear', kernel_initializer=self.get_initializer())(encoded)
-        encoded = Dense(int (flattened_vector_size * .15),
+        encoded = Dense(int (flattened_vector_size * .8),
                         activation= 'linear',
                         kernel_initializer= self.get_initializer())(encoded)
         decoded = Dense(flattened_vector_size,

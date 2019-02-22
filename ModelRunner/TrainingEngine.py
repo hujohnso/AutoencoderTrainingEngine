@@ -55,7 +55,7 @@ if __name__ == "__main__":
 # Make visualize show validation set too: DONE
 # Make a method to use the model for visualizing without re-training
 # Make the vectors into an objects so we know what the original images were trained on
-
+# Save the training and validation sets along with the model so that when you try and retrain you don't get different training images
 
 # Make code pullable
 # Git hub git ignore and choose python: DONE
@@ -74,7 +74,8 @@ if __name__ == "__main__":
 # pip freeze: DONE
 # Get working with pre loaded datasets
 # Make the image pulling more durable and useful to prepare for using many different datasets with little: DONE
-
+# Change folder names and make sure it doesn't screw up pulling
+# write some sort of
 
 
 #Before help
