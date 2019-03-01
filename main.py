@@ -5,6 +5,8 @@ from AutoEncoder.ConvFullyConnectedUpConv import ConvFullyConnectedUpConv
 from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, ModelHyperParametersRealImagesGray
 
 # hyper_parameters = ModelHyperParameters()
+from Results import ResultsWriter
+
 hyper_parameters = ModelHyperParametersRealImagesGray()
 
 # hyper_parameters = ModelHyperParametersRealImagesColor()
@@ -29,6 +31,9 @@ def run_all_steps(autoEncoder):
     auto_encoder_model = timer(lambda: auto_encoder.build_model(input_matrix), "model creation")
     auto_encoder_model = timer(lambda: auto_encoder.train(input_matrix, auto_encoder_model, validation_matrix), "the model to train")
     timer(lambda: auto_encoder.visualize(auto_encoder_model), "visualize")
+    results_writer = ResultsWriter.ResultsWriter(hyper_parameters)
+    results_writer.write_results_to_file()
+
 
 
 if __name__ == "__main__":
@@ -79,6 +84,7 @@ if __name__ == "__main__":
 # Save images to a file instead
 # Mean absolute percentage error
 # Write descriptions of your hyper-parameters so they make sense
+# Normalize your images
 
 # make it run the python way
 # rename research

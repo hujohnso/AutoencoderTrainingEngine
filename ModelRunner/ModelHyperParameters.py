@@ -1,106 +1,119 @@
-
 from AutoEncoder.ImageManipulationType import ImageManipulationType
 
-
-class ModelHyperParameters:
+class ModelHyperParameters(object):
     def __init__(self):
-        pass
+        self.base_file_path = "../"
+        self.file_path_for_frames = self.base_file_path + "FrameExtractor/Animations/"
+        self.file_path_for_validation_set = self.base_file_path + ""
+        self.file_path_for_training_set = self.base_file_path + ""
+        self.number_of_epochs_for_training = 20
+        self.batch_size = 30
+        self.load_model = False
+        self.adam_specify_learning_rate = False
+        self.adam_alpha = 1e-3
+        self.adam_decay_rate = .001
+        self.as_gray = True
+        self.number_of_images = 120
+        self.number_of_images_for_validation = 120
+        self.type_of_transformation = ImageManipulationType.PIXEL
+        self.image_rescale_value = 1.0 / 25
+        self.pixel_resize_value = 64
+        self.pixel_resize_for_visualize = 256
+        self.model_name = "my_model.h5"
+        self.working_model_path = self.base_file_path + "saved_models/"
+        self.tensor_board_directory = self.base_file_path + "tensor_board_models"
 
+    # These parameters describe the necessary file paths to the sets of images to train on
     base_file_path = "../"
     file_path_for_frames = base_file_path + "FrameExtractor/Animations/"
     file_path_for_validation_set = base_file_path + ""
     file_path_for_training_set = base_file_path + ""
+
+    # Training specific parameters
     number_of_epochs_for_training = 20
     batch_size = 30
-    image_width_after_rescale: int
-    image_height_after_rescale: int
-    image_depth = 3
+    load_model = False
+    adam_specify_learning_rate = False
+    adam_alpha = None
+    adam_decay_rate = None
 
+    # Training and validation set definitions
     as_gray = True
     number_of_images = 120
     number_of_images_for_validation = 120
-    model_name = "my_model.h5"
-    working_model_path = base_file_path + "saved_models/" + model_name
-    tensor_board_directory = base_file_path + "tensor_board_models"
-    load_model = False
-    starting_frame_for_visualize = .0040
-
-    # These parameters tell you what type of rescaling you would like to do
-    # Note that if this variable is set to Pixel it will rescale according to pixels
-    # Also note that if this variable is set to ratio it will rescale according to the ratio in image rescale value.
     type_of_transformation = ImageManipulationType.PIXEL
     image_rescale_value = 1.0 / 25
     pixel_resize_value = 64
     pixel_resize_for_visualize = 256
-    adam_specify_learning_rate = False
-    adam_alpha = None
-    adam_decay_rate = None
+
+    # Model and Tensorboard definitions
+    model_name = "my_model.h5"
+    working_model_path = base_file_path + "saved_models/" + model_name
+    tensor_board_directory = base_file_path + "tensor_board_models"
 
 
 class ModelHyperParametersRealImagesGray(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-
-    # This one has pretty good resutlts
-    number_of_epochs_for_training = 10
-    number_of_images = 10
-    number_of_images_for_validation = 4
-    batch_size = 10
-    # converged down very well
-    # model_name = "real_image_model_grey.h5"
-    model_name = "real_image_model_grey_num_images_25.h5"
-    load_model = False
-    pixel_resize_value = 64
-    adam_specify_learning_rate = True
-    adam_alpha = 1e-3
-    adam_decay_rate = .001
-    file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
-    file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/train"
+        self.number_of_epochs_for_training = 10
+        self.number_of_images = 10
+        self.number_of_images_for_validation = 4
+        self.batch_size = 10
+        self.model_name = "real_image_model_grey_num_images_25.h5"
+        self.load_model = False
+        self.pixel_resize_value = 64
+        self.adam_specify_learning_rate = True
+        self.adam_alpha = 1e-3
+        self.adam_decay_rate = .001
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/train"
 
 
 class ModelHyperParametersRealImagesColor(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-    number_of_epochs_for_training = 1000
-    number_of_images = 10
-    batch_size = 10
-    model_name = "real_image_model_color.h5"
-    load_model = False
-    as_gray = False
-    adam_specify_learning_rate = True
-    adam_alpha = 1e-1
-    adam_decay_rate = .0001
-    file_path_for_validation_set = ModelHyperParameters.base_file_path + ""
-    file_path_for_training_set = ModelHyperParameters.base_file_path + ""
+        self.number_of_epochs_for_training = 1000
+        self.number_of_images = 10
+        self.batch_size = 10
+        self.model_name = "real_image_model_color.h5"
+        self.load_model = False
+        self.as_gray = False
+        self.adam_specify_learning_rate = True
+        self.adam_alpha = 1e-1
+        self.adam_decay_rate = .0001
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + ""
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + ""
 
 
 class ModelHyperParametersAnimationGrey(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-    number_of_epochs_for_training = 200
-    batch_size = 30
-    as_gray = True
-    number_of_images = 120
-    number_of_images_for_validation = 120
-    model_name = "animation_grey.h5"
-    load_model = False
-    file_path_for_validation_set = ModelHyperParameters.base_file_path + ""
-    file_path_for_training_set = ModelHyperParameters.base_file_path + ""
+        self.number_of_epochs_for_training = 200
+        self.batch_size = 30
+        self.as_gray = True
+        self.number_of_images = 120
+        self.number_of_images_for_validation = 120
+        self.model_name = "animation_grey.h5"
+        self.load_model = False
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + ""
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + ""
 
 
 class ModelHyperParametersMNIST(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-    number_of_epochs_for_training = 200
-    batch_size = 30
-    as_gray = True
-    number_of_images = 60000
-    number_of_images_for_validation = 10000
-    model_name = "mnist_model.h5"
-    load_model = False
-    file_path_for_validation_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mniszt_jpgfiles/train"
-    file_path_for_training_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mniszt_jpgfiles/test"
-    type_of_transformation = ImageManipulationType.PIXEL
-    image_rescale_value = 1.0 / 25
-    pixel_resize_value = 64
-    pixel_resize_for_visualize = 64
+        self.number_of_epochs_for_training = 200
+        self.batch_size = 30
+        self.as_gray = True
+        self.number_of_images = 60000
+        self.number_of_images_for_validation = 10000
+        self.model_name = "mnist_model.h5"
+        self.load_model = False
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mniszt_jpgfiles/train"
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mniszt_jpgfiles/test"
+        self.type_of_transformation = ImageManipulationType.PIXEL
+        self.image_rescale_value = 1.0 / 25
+        self.pixel_resize_value = 64
+        self.pixel_resize_for_visualize = 64
+
+

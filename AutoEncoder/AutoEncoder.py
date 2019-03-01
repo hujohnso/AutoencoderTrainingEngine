@@ -147,11 +147,11 @@ class AutoEncoder:
         return model
 
     def save_model(self, model_to_save):
-        model_to_save.save(self.hyper_params.working_model_path)
+        model_to_save.save(self.hyper_params.working_model_path + self.hyper_params.model_name)
 
     def build_model(self, input_image_vector):
         if self.hyper_params.load_model:
-            return load_model(self.hyper_params.working_model_path)
+            return load_model(self.hyper_params.working_model_path + self.hyper_params.model_name)
         else:
             return self.create_autoencoder(input_image_vector)
 
