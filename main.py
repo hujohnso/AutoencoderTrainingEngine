@@ -34,7 +34,7 @@ def run_all_steps(autoEncoder):
     results_writer = ResultsWriter.ResultsWriter(hyper_parameters, auto_encoder_model)
     results_writer.write_results_to_file()
     results_writer.write_model_history_to_file()
-    original, results = auto_encoder.get_results_matrices(auto_encoder_model)
+    original, results = auto_encoder.get_results_matrix_and_transform_input_matrix(auto_encoder_model, input_matrix)
     results_writer.write_image_matrix_to_files(original, "original")
     results_writer.write_image_matrix_to_files(results, "results")
 

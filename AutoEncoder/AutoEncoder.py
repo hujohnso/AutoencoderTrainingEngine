@@ -184,7 +184,7 @@ class AutoEncoder:
         fig.tight_layout()
         plt.show()
 
-    #Only works in greyscale for now
+    # Only works in greyscale for now
     def get_results_matrices(self, trained_model):
         number_of_result_images = 5
         original_matrix = numpy.empty([number_of_result_images,
@@ -203,6 +203,25 @@ class AutoEncoder:
                                                                                self.image_depth_after_rescale)))
         return original_matrix, results_matrix
 
+    def get_results_matrix_and_transform_input_matrix(self, trained_model, input_matrix):
+        number_of_result_images = 5
+        size_of_input_matrix = input_matrix.shape[0] - 1
+        original_matrix = numpy.empty([number_of_result_images,
+                                       self.hyper_params.pixel_resize_for_visualize,
+                                       self.hyper_params.pixel_resize_for_visualize])
+        results_matrix = numpy.empty([number_of_result_images,
+                                      self.hyper_params.pixel_resize_for_visualize,
+                                      self.hyper_params.pixel_resize_for_visualize])
+        for x in range(number_of_result_images):
+            image = input_matrix[rand.randint(0, size_of_input_matrix)]
+            original_matrix[x, :, :] = self.reformat_auto_encoder_format(image)
+            results_matrix[x, :, :] = self.reformat_auto_encoder_format(
+                trained_model.predict(image.reshape(1,
+                                                    self.image_width_after_rescale,
+                                                    self.image_height_after_rescale,
+                                                    self.image_depth_after_rescale)))
+        return original_matrix, results_matrix
+
     def get_random_image_for_visualize(self, folder_containing_images):
         list_of_images = cv2.os.listdir(folder_containing_images)
         image_name = ""
@@ -211,15 +230,19 @@ class AutoEncoder:
         return cv2.imread(folder_containing_images + "/" + image_name, self.get_image_read_parameter())
 
     def rescaler(self, image_to_alter):
+        image = None
         if self.hyper_params.type_of_transformation == ImageManipulationType.PIXEL:
-            return cv2.resize(image_to_alter,
-                              (self.hyper_params.pixel_resize_value, self.hyper_params.pixel_resize_value))
+            image = cv2.resize(image_to_alter,
+                               (self.hyper_params.pixel_resize_value, self.hyper_params.pixel_resize_value))
         elif self.hyper_params.type_of_transformation == ImageManipulationType.RATIO:
-            return rescale(image_to_alter, self.hyper_params.image_rescale_value, anti_aliasing=False)
+            image = rescale(image_to_alter, self.hyper_params.image_rescale_value, anti_aliasing=False)
         elif self.hyper_params.type_of_transformation == ImageManipulationType.NONE:
-            return image_to_alter
+            image = image_to_alter
+        image = image / 255
+        return image
 
     def inverse_rescaler(self, image_to_alter):
+        image_to_alter = image_to_alter * 255
         return cv2.resize(image_to_alter, (self.hyper_params.pixel_resize_for_visualize,
                                            self.hyper_params.pixel_resize_for_visualize))
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
