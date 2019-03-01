@@ -30,10 +30,13 @@ def run_all_steps(autoEncoder):
     validation_matrix = timer(lambda: autoEncoder.init_validation_matrix(), "validation/dev set creation")
     auto_encoder_model = timer(lambda: auto_encoder.build_model(input_matrix), "model creation")
     auto_encoder_model = timer(lambda: auto_encoder.train(input_matrix, auto_encoder_model, validation_matrix), "the model to train")
-    timer(lambda: auto_encoder.visualize(auto_encoder_model), "visualize")
-    results_writer = ResultsWriter.ResultsWriter(hyper_parameters)
+    # timer(lambda: auto_encoder.visualize(auto_encoder_model), "visualize")
+    results_writer = ResultsWriter.ResultsWriter(hyper_parameters, auto_encoder_model)
     results_writer.write_results_to_file()
-
+    results_writer.write_model_history_to_file()
+    original, results = auto_encoder.get_results_matrices(auto_encoder_model)
+    results_writer.write_image_matrix_to_files(original, "original")
+    results_writer.write_image_matrix_to_files(results, "results")
 
 
 if __name__ == "__main__":

@@ -138,7 +138,8 @@ class AutoEncoder:
                   batch_size=self.hyper_params.batch_size,
                   shuffle=True,
                   validation_data=(
-                  validation_matrix, validation_matrix.reshape(self.hyper_params.number_of_images_for_validation, -1)),
+                      validation_matrix,
+                      validation_matrix.reshape(self.hyper_params.number_of_images_for_validation, -1)),
                   callbacks=[TensorBoard(log_dir=self.hyper_params.tensor_board_directory,
                                          histogram_freq=0,
                                          write_graph=True,
@@ -183,6 +184,25 @@ class AutoEncoder:
         fig.tight_layout()
         plt.show()
 
+    #Only works in greyscale for now
+    def get_results_matrices(self, trained_model):
+        number_of_result_images = 5
+        original_matrix = numpy.empty([number_of_result_images,
+                                       self.hyper_params.pixel_resize_for_visualize,
+                                       self.hyper_params.pixel_resize_for_visualize])
+        results_matrix = numpy.empty([number_of_result_images,
+                                      self.hyper_params.pixel_resize_for_visualize,
+                                      self.hyper_params.pixel_resize_for_visualize])
+        for x in range(number_of_result_images):
+            image = self.get_random_image_for_visualize(self.hyper_params.file_path_for_training_set)
+            original_matrix[x, :, :] = self.reformat_auto_encoder_format(self.prepare_single_image(image))
+            results_matrix[x, :, :] = self.reformat_auto_encoder_format(
+                trained_model.predict(self.prepare_single_image(image).reshape(1,
+                                                                               self.image_width_after_rescale,
+                                                                               self.image_height_after_rescale,
+                                                                               self.image_depth_after_rescale)))
+        return original_matrix, results_matrix
+
     def get_random_image_for_visualize(self, folder_containing_images):
         list_of_images = cv2.os.listdir(folder_containing_images)
         image_name = ""
@@ -203,4 +223,3 @@ class AutoEncoder:
         return cv2.resize(image_to_alter, (self.hyper_params.pixel_resize_for_visualize,
                                            self.hyper_params.pixel_resize_for_visualize))
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
-

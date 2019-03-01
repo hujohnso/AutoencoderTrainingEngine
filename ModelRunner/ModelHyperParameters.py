@@ -1,5 +1,6 @@
 from AutoEncoder.ImageManipulationType import ImageManipulationType
 
+
 class ModelHyperParameters(object):
     def __init__(self):
         self.base_file_path = "../"
@@ -28,6 +29,7 @@ class ModelHyperParameters(object):
     file_path_for_frames = base_file_path + "FrameExtractor/Animations/"
     file_path_for_validation_set = base_file_path + ""
     file_path_for_training_set = base_file_path + ""
+    results_folder = "tmp"
 
     # Training specific parameters
     number_of_epochs_for_training = 20
@@ -67,6 +69,7 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
         self.adam_decay_rate = .001
         self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
         self.file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/train"
+        self.results_folder = "realImagesGrey"
 
 
 class ModelHyperParametersRealImagesColor(ModelHyperParameters):
