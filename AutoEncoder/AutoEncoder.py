@@ -80,7 +80,7 @@ class AutoEncoder:
 
     def init_image_matrix(self, folder_with_images, number_of_frames):
         matrix = None
-        skipping_factor = len(cv2.os.listdir(folder_with_images)) / number_of_frames
+        skipping_factor = int(len(cv2.os.listdir(folder_with_images)) / number_of_frames)
         num_in_matrix = 0
         image_number = 0
         for filename in cv2.os.listdir(folder_with_images):
@@ -93,7 +93,7 @@ class AutoEncoder:
                 image = self.prepare_single_image(image)
                 if num_in_matrix == 0:
                     self.save_original_dims(image)
-                    matrix = numpy.empty([self.hyper_params.number_of_images,
+                    matrix = numpy.empty([number_of_frames,
                                           self.image_width_after_rescale,
                                           self.image_height_after_rescale,
                                           self.image_depth_after_rescale])
@@ -138,7 +138,7 @@ class AutoEncoder:
                   batch_size=self.hyper_params.batch_size,
                   shuffle=True,
                   validation_data=(
-                  validation_matrix, validation_matrix.reshape(self.hyper_params.number_of_images, -1)),
+                  validation_matrix, validation_matrix.reshape(self.hyper_params.number_of_images_for_validation, -1)),
                   callbacks=[TensorBoard(log_dir=self.hyper_params.tensor_board_directory,
                                          histogram_freq=0,
                                          write_graph=True,

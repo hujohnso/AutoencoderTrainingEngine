@@ -42,17 +42,17 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
         super().__init__()
 
     # This one has pretty good resutlts
-    number_of_epochs_for_training = 1500
-    number_of_images = 500
-    number_of_images_for_validation = 100
-    batch_size = 60
+    number_of_epochs_for_training = 10
+    number_of_images = 10
+    number_of_images_for_validation = 4
+    batch_size = 10
     # converged down very well
     # model_name = "real_image_model_grey.h5"
-    model_name = "real_image_model_grey_num_images_120.h5"
+    model_name = "real_image_model_grey_num_images_25.h5"
     load_model = False
     pixel_resize_value = 64
     adam_specify_learning_rate = True
-    adam_alpha = 1e-2
+    adam_alpha = 1e-3
     adam_decay_rate = .001
     file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
     file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/train"

@@ -13,14 +13,14 @@ class FrameExtractor:
     # orca: https://www.youtube.com/watch?v=n2vZBxf-8dc
     # monkey: https://www.youtube.com/watch?v=spMkaJp975s
     # horse: https://www.youtube.com/watch?v=xC2I7Xc3znQ
-    # donky: https://www.youtube.com/watch?v=gROO7xSTxfY
+    # donkey: https://www.youtube.com/watch?v=gROO7xSTxfY
     # goat: https://www.youtube.com/watch?v=nlYlNF30bVg
 
     list_of_videos = ["https://www.youtube.com/watch?v=r6y3moxAtXQ",
                       "https://www.youtube.com/watch?v=mlOiXMvMaZo",
                       "https://www.youtube.com/watch?v=C0taqxZ-gLQ",
                       "https://www.youtube.com/watch?v=CsxSXVbNL0Q",
-                      "https://www.youtube.com/watch?v=k8n2FZU2VXY",
+                      # "https://www.youtube.com/watch?v=k8n2FZU2VXY",
                       "https://www.youtube.com/watch?v=n2vZBxf-8dc",
                       "https://www.youtube.com/watch?v=spMkaJp975s",
                       "https://www.youtube.com/watch?v=xC2I7Xc3znQ",

@@ -6,7 +6,9 @@ saved_models/*
 tensor_board_models/*
 !tensor_board_models/.gitkeep
 PreMadeDatasets/*
-!PreMadeDatasets/*
+!PreMadeDatasets/.gitkeep
+Results/*
+Results/.gitkeep
 venv/*
 tmp/
 

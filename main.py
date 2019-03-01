@@ -6,9 +6,9 @@ from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor
 
 # hyper_parameters = ModelHyperParameters()
 hyper_parameters = ModelHyperParametersRealImagesGray()
+
 # hyper_parameters = ModelHyperParametersRealImagesColor()
 #hyper_parameters = ModelHyperParametersAnimationGrey()
-
 # auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
 auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
 # auto_encoder = ConvAutoEncoder.ConvAutoEncoder(hyper_parameters)
@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
 # Make code pullable
 # Git hub git ignore and choose python: DONE
-# .env
+# .env: NOT NECESSARY
 # Select 10 videos and train against all them: ON its way
 # Try hyperbolic tangent
 # Try exponential
@@ -76,6 +76,14 @@ if __name__ == "__main__":
 # Make the image pulling more durable and useful to prepare for using many different datasets with little: DONE
 # Change folder names and make sure it doesn't screw up pulling
 # write some sort of
+# Save images to a file instead
+# Mean absolute percentage error
+# Write descriptions of your hyper-parameters so they make sense
+
+# make it run the python way
+# rename research
+# rename Training engine to main.py: DONE
+
 
 
 #Before help

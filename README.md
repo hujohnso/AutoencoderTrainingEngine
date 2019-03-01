@@ -13,11 +13,10 @@ The following is a description of how to run in pycharm but should contain the n
 -Step 5: Set your project interpreter to python3.6 file->settings->project: research->ProjectInterpreter-> set the Project Intrepreter dropdown to python3.6
 
 -Step6: Add a virtual environment to the pycharm project. file->settings->project: research->ProjectInterpreter->click the little gear next to the Project Intrepreter Dropdown and click 'new' then ok.
-
+``
 -Step7: Install all the necessary packages by running 'pip install -r requirements.txt from your terminal.
 
 -Step8: In that same terminal run 'sudo apt-get install python3-tk'
-
 
 
 #Configuration:
@@ -25,4 +24,4 @@ The following is a description of how to run in pycharm but should contain the n
 -Configuration for training models is in ModelRunner/ModelHyperParameters 
 -To train you must first retrieve the images necessary.  These are retrieved by running
  the main function in FrameRunner/FrameExtract.py
- -The training code is run by running
+-The training code is run by running
