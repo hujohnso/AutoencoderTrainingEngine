@@ -1,18 +1,20 @@
 import time
 
-from AutoEncoder import FullyConnectedAutoEncoder
+from AutoEncoder import FullyConnectedAutoEncoder, MNISTExampleAutoEncoder
 from AutoEncoder.ConvFullyConnectedUpConv import ConvFullyConnectedUpConv
-from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, ModelHyperParametersRealImagesGray
+from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, ModelHyperParametersRealImagesGray, \
+    ModelHyperParametersMNIST
 
 # hyper_parameters = ModelHyperParameters()
 from Results import ResultsWriter
 
-hyper_parameters = ModelHyperParametersRealImagesGray()
-
+#hyper_parameters = ModelHyperParametersRealImagesGray()
+hyper_parameters = ModelHyperParametersMNIST()
 # hyper_parameters = ModelHyperParametersRealImagesColor()
 #hyper_parameters = ModelHyperParametersAnimationGrey()
 # auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
-auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
+#auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
+auto_encoder = MNISTExampleAutoEncoder.MNISTExampleAutoEncoder(hyper_parameters)
 # auto_encoder = ConvAutoEncoder.ConvAutoEncoder(hyper_parameters)
 # auto_encoder = Unet()
 
@@ -25,22 +27,31 @@ def timer(executable, function_executed):
     return return_value
 
 
+def run_number_of_images_experiment():
+    for i in range(25):
+        hyper_parameters.number_of_images = (i + 1) * 20
+        hyper_parameters.number_of_images_for_validation = int(hyper_parameters.number_of_images * .2)
+        hyper_parameters.model_name = "real_images_grey_5_%d.h5" % hyper_parameters.number_of_images
+        hyper_parameters.results_folder = "real_images_grey_5_%d" % hyper_parameters.number_of_images
+        hyper_parameters.batch_size = hyper_parameters.number_of_images
+        run_all_steps(auto_encoder)
+
+
 def run_all_steps(autoEncoder):
     input_matrix = timer(lambda: auto_encoder.init_training_matrix(), "training set creation")
     validation_matrix = timer(lambda: autoEncoder.init_validation_matrix(), "validation/dev set creation")
     auto_encoder_model = timer(lambda: auto_encoder.build_model(input_matrix), "model creation")
     auto_encoder_model = timer(lambda: auto_encoder.train(input_matrix, auto_encoder_model, validation_matrix), "the model to train")
-    # timer(lambda: auto_encoder.visualize(auto_encoder_model), "visualize")
     results_writer = ResultsWriter.ResultsWriter(hyper_parameters, auto_encoder_model)
-    results_writer.write_results_to_file()
-    results_writer.write_model_history_to_file()
     original, results = auto_encoder.get_results_matrix_and_transform_input_matrix(auto_encoder_model, input_matrix)
-    results_writer.write_image_matrix_to_files(original, "original")
-    results_writer.write_image_matrix_to_files(results, "results")
+    original_validation, results_validation = auto_encoder.get_results_matrix_and_transform_input_matrix(auto_encoder_model, validation_matrix)
+    results_writer.write_all_information(original, results, original_validation, results_validation)
 
 
 if __name__ == "__main__":
     run_all_steps(auto_encoder)
+    # run_number_of_images_experiment()
+
 
 #Next coding steps:
 # Make a dev and test set to compare error: DONE
@@ -64,6 +75,7 @@ if __name__ == "__main__":
 # Make a method to use the model for visualizing without re-training
 # Make the vectors into an objects so we know what the original images were trained on
 # Save the training and validation sets along with the model so that when you try and retrain you don't get different training images
+# Save the tensorboard models and the .h5 files into the results folders
 
 # Make code pullable
 # Git hub git ignore and choose python: DONE
@@ -74,7 +86,8 @@ if __name__ == "__main__":
 # Co lab
 
 # Install tensorflow GPU
-# requirements / pip file to show what dependencies to download: DONE
+# requirements / pip file to show what d
+# ependencies to download: DONE
 # Automate the video training to have a validation set: DONE
 # Auto encoder non image data (not text) high dimention, didgets, mnist
 # Get a cnn with mnist
