@@ -9,6 +9,7 @@ PreMadeDatasets/*
 !PreMadeDatasets/.gitkeep
 Results/*
 Results/.gitkeep
+Results/ResultsWriter.py
 venv/*
 tmp/
 
