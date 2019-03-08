@@ -2,19 +2,22 @@ import time
 
 from AutoEncoder import FullyConnectedAutoEncoder, MNISTExampleAutoEncoder
 from AutoEncoder.ConvFullyConnectedUpConv import ConvFullyConnectedUpConv
+from AutoEncoder.FullyConnectedAutoEncoderDeep import FullyConnectedAutoEncoderDeep
+from AutoEncoder.FullyConnectedAutoEncoderExponential import FullyConnectedAutoEncoderExponential
+from AutoEncoder.FullyConnectedAutoEncoderHyperbolicTangent import FullyConnectedAutoEncoderHyperbolicTangent
 from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, ModelHyperParametersRealImagesGray, \
     ModelHyperParametersMNIST
 
 # hyper_parameters = ModelHyperParameters()
 from Results import ResultsWriter
 
-#hyper_parameters = ModelHyperParametersRealImagesGray()
-hyper_parameters = ModelHyperParametersMNIST()
+hyper_parameters = ModelHyperParametersRealImagesGray()
+# hyper_parameters = ModelHyperParametersMNIST()
 # hyper_parameters = ModelHyperParametersRealImagesColor()
 #hyper_parameters = ModelHyperParametersAnimationGrey()
 # auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
-#auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
-auto_encoder = MNISTExampleAutoEncoder.MNISTExampleAutoEncoder(hyper_parameters)
+auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
+# auto_encoder = MNISTExampleAutoEncoder.MNISTExampleAutoEncoder(hyper_parameters)
 # auto_encoder = ConvAutoEncoder.ConvAutoEncoder(hyper_parameters)
 # auto_encoder = Unet()
 
@@ -34,22 +37,52 @@ def run_number_of_images_experiment():
         hyper_parameters.model_name = "real_images_grey_5_%d.h5" % hyper_parameters.number_of_images
         hyper_parameters.results_folder = "real_images_grey_5_%d" % hyper_parameters.number_of_images
         hyper_parameters.batch_size = hyper_parameters.number_of_images
-        run_all_steps(auto_encoder)
+        run_all_steps(auto_encoder, hyper_parameters)
 
 
-def run_all_steps(autoEncoder):
-    input_matrix = timer(lambda: auto_encoder.init_training_matrix(), "training set creation")
-    validation_matrix = timer(lambda: autoEncoder.init_validation_matrix(), "validation/dev set creation")
-    auto_encoder_model = timer(lambda: auto_encoder.build_model(input_matrix), "model creation")
-    auto_encoder_model = timer(lambda: auto_encoder.train(input_matrix, auto_encoder_model, validation_matrix), "the model to train")
-    results_writer = ResultsWriter.ResultsWriter(hyper_parameters, auto_encoder_model)
-    original, results = auto_encoder.get_results_matrix_and_transform_input_matrix(auto_encoder_model, input_matrix)
-    original_validation, results_validation = auto_encoder.get_results_matrix_and_transform_input_matrix(auto_encoder_model, validation_matrix)
-    results_writer.write_all_information(original, results, original_validation, results_validation)
+def run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, name):
+    for i in range(3):
+        hyper_parameters_local.number_of_images = (i + 1) * 100
+        hyper_parameters_local.number_of_images_for_validation = int(hyper_parameters_local.number_of_images * .2)
+        hyper_parameters_local.model_name = name + "%d.h5" % hyper_parameters_local.number_of_images
+        hyper_parameters_local.results_folder = name + "%d" % hyper_parameters_local.number_of_images
+        hyper_parameters_local.batch_size = hyper_parameters_local.number_of_images
+        run_all_steps(auto_encoder_local, hyper_parameters_local)
+
+
+def run_activation_function_tests():
+    hyper_parameters_local = ModelHyperParametersRealImagesGray()
+    auto_encoder_local = FullyConnectedAutoEncoderExponential(hyper_parameters_local)
+    run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_elu_")
+    auto_encoder_local = FullyConnectedAutoEncoderHyperbolicTangent(hyper_parameters_local)
+    run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_hyperbolic_tangent_")
+    auto_encoder_local = FullyConnectedAutoEncoderHyperbolicTangent(hyper_parameters_local)
+    run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_hyperbolic_tangent_")
+    auto_encoder_local = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters_local)
+    run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_linear_")
+
+
+def run_deep_fully_connected_test():
+    hyper_parameters_local = ModelHyperParametersRealImagesGray()
+    auto_encoder_local = FullyConnectedAutoEncoderDeep(hyper_parameters_local)
+    run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_deep_")
+
+
+def run_all_steps(auto_encoder_local, hyper_parameters_local):
+    results_writer = ResultsWriter.ResultsWriter(hyper_parameters_local)
+    input_matrix = timer(lambda: auto_encoder_local.init_training_matrix(), "training set creation")
+    validation_matrix = timer(lambda: auto_encoder_local.init_validation_matrix(), "validation/dev set creation")
+    auto_encoder_model = timer(lambda: auto_encoder_local.build_model(input_matrix), "model creation")
+    auto_encoder_model = timer(lambda: auto_encoder_local.train(input_matrix, auto_encoder_model, validation_matrix), "the model to train")
+    original, results = auto_encoder_local.get_results_matrix_and_transform_input_matrix(auto_encoder_model, input_matrix)
+    original_validation, results_validation = auto_encoder_local.get_results_matrix_and_transform_input_matrix(auto_encoder_model, validation_matrix)
+    results_writer.write_all_information(auto_encoder_model, original, results, original_validation, results_validation)
 
 
 if __name__ == "__main__":
-    run_all_steps(auto_encoder)
+    run_all_steps(auto_encoder, hyper_parameters)
+    # run_deep_fully_connected_test()
+    # run_all_steps(auto_encoder)
     # run_number_of_images_experiment()
 
 
@@ -64,7 +97,7 @@ if __name__ == "__main__":
 # Figure out how to get the activated neron
 # Parameterize the black and white better: DONE
 # Figure out how to run this on the cluster that Saad told me about: DONE
-# Make it easy to switch out videos
+# Make it easy to switch out videos: DONE
 # Learn how to use tensorboard
 # Look into learning rate decay better
 # Make allow the framework to have a validation set
@@ -95,21 +128,20 @@ if __name__ == "__main__":
 # pip freeze: DONE
 # Get working with pre loaded datasets
 # Make the image pulling more durable and useful to prepare for using many different datasets with little: DONE
-# Change folder names and make sure it doesn't screw up pulling
-# write some sort of
-# Save images to a file instead
+# Change folder names and make sure it doesn't screw up pulling: DONE
+# Save images to a file instead: DONE
 # Mean absolute percentage error
-# Write descriptions of your hyper-parameters so they make sense
-# Normalize your images
+# Write descriptions of your hyper-parameters so they make sense: DONE
+# Normalize your images: Done
 
 # make it run the python way
-# rename research
+# rename research: DONE
 # rename Training engine to main.py: DONE
 
 
 
 #Before help
-    #Set up hyperparmaters have different configurations to quickly switch out
+    #Set up hyperparmaters have different configurations to quickly switch out: DONE
 
 
 #Questions:

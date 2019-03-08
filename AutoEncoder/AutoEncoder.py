@@ -249,9 +249,13 @@ class AutoEncoder:
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
 
     def compile_autoencoder(self, auto_encoder):
-        if self.hyper_params.adam_specify_learning_rate:
+        if self.hyper_params.adam_specify_learning_rate and not self.hyper_params.adam_decay_rate is None:
             auto_encoder.compile(optimizer=Adam(lr=self.hyper_params.adam_alpha,
                                  decay=self.hyper_params.adam_decay_rate),
+                                 loss='mean_squared_error',
+                                 metrics=['binary_crossentropy'])
+        elif self.hyper_params.adam_specify_learning_rate and self.hyper_params.adam_decay_rate is None:
+            auto_encoder.compile(optimizer=Adam(lr=self.hyper_params.adam_alpha),
                                  loss='mean_squared_error',
                                  metrics=['binary_crossentropy'])
         else:

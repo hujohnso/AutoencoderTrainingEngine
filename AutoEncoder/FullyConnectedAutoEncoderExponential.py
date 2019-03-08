@@ -7,7 +7,7 @@ from keras.legacy import layers
 from keras.models import Sequential, Model
 
 
-class FullyConnectedAutoEncoder(AutoEncoder):
+class FullyConnectedAutoEncoderExponential(AutoEncoder):
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
 
@@ -18,12 +18,12 @@ class FullyConnectedAutoEncoder(AutoEncoder):
                                    self.image_depth_after_rescale))
         encoded = Flatten()(input_image)
         encoded = Dense(flattened_vector_size,
-                        activation='linear', kernel_initializer=self.get_initializer())(encoded)
+                        activation='elu', kernel_initializer=self.get_initializer())(encoded)
         encoded = Dense(int(flattened_vector_size * .3),
-                        activation='linear',
+                        activation='elu',
                         kernel_initializer=self.get_initializer())(encoded)
         decoded = Dense(flattened_vector_size,
-                        activation='linear', kernel_initializer=self.get_initializer())(encoded)
+                        activation='elu', kernel_initializer=self.get_initializer())(encoded)
         auto_encoder = Model(input_image, decoded)
         self.compile_autoencoder(auto_encoder)
         print(auto_encoder.summary())

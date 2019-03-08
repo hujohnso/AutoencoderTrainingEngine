@@ -13,9 +13,8 @@ class ResultsWriter:
     model = None
     root_file_path = None
 
-    def __init__(self, model_hyper_parameters, model):
+    def __init__(self, model_hyper_parameters):
         self.parameters = model_hyper_parameters
-        self.model = model
         self.root_file_path = "../Results/" + self.parameters.results_folder
         self.delete_folder_and_create_new_empty_folder(self.root_file_path)
         self.delete_folder_and_create_new_empty_folder(self.root_file_path + "/images")
@@ -40,7 +39,8 @@ class ResultsWriter:
             cv2.imwrite(self.root_file_path + "/images/" + name + "%d.jpg" % i, image)
             i += 1
 
-    def write_all_information(self, training_matrix_orig, training_matrix, validation_matrix_orig, validation_matrix):
+    def write_all_information(self, model, training_matrix_orig, training_matrix, validation_matrix_orig, validation_matrix):
+        self.model = model
         self.write_hyper_parameters_to_file()
         self.write_model_history_to_file()
         self.write_image_matrix_to_files(training_matrix_orig, 'training_matrix_original')
