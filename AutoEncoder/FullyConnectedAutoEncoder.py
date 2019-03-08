@@ -25,12 +25,6 @@ class FullyConnectedAutoEncoder(AutoEncoder):
         decoded = Dense(flattened_vector_size,
                         activation='linear', kernel_initializer=self.get_initializer())(encoded)
         auto_encoder = Model(input_image, decoded)
-        if self.hyper_params.adam_specify_learning_rate:
-            auto_encoder.compile(optimizer=Adam(lr=self.hyper_params.adam_alpha,
-                                 decay=self.hyper_params.adam_decay_rate),
-                                 loss='mean_squared_error',
-                                 metrics=['binary_crossentropy'])
-        else:
-            auto_encoder.compile(optimizer='Adam', loss='mean_squared_error', metrics=['binary_crossentropy'])
+        self.compile_autoencoder(auto_encoder)
         print(auto_encoder.summary())
         return auto_encoder

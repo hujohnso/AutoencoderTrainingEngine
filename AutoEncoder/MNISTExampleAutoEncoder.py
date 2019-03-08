@@ -29,6 +29,6 @@ class MNISTExampleAutoEncoder(AutoEncoder):
         decoded = Dropout(0.5)(decoded)
         decoded = Dense(flattened_vector_size, activation='softmax')(decoded)
         auto_encoder = Model(input_image, decoded)
-        auto_encoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['binary_crossentropy'])
+        self.compile_autoencoder(auto_encoder)
         print(auto_encoder.summary())
         return auto_encoder

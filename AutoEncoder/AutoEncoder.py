@@ -11,6 +11,7 @@ from keras.models import Sequential, Model
 import matplotlib.pyplot as plt
 import time
 import numpy
+from keras.optimizers import Adam
 from skimage import data, img_as_float
 from skimage.transform import rescale
 from keras.callbacks import TensorBoard
@@ -246,3 +247,12 @@ class AutoEncoder:
         return cv2.resize(image_to_alter, (self.hyper_params.pixel_resize_for_visualize,
                                            self.hyper_params.pixel_resize_for_visualize))
         # image = rescale(image_matrix, 1.0 / self.hyper_params.image_rescale_value, anti_aliasing=False)
+
+    def compile_autoencoder(self, auto_encoder):
+        if self.hyper_params.adam_specify_learning_rate:
+            auto_encoder.compile(optimizer=Adam(lr=self.hyper_params.adam_alpha,
+                                 decay=self.hyper_params.adam_decay_rate),
+                                 loss='mean_squared_error',
+                                 metrics=['binary_crossentropy'])
+        else:
+            auto_encoder.compile(optimizer='Adam', loss='mean_squared_error', metrics=['binary_crossentropy'])

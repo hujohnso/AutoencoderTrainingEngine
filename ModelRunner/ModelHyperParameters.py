@@ -120,9 +120,9 @@ class ModelHyperParametersMNIST(ModelHyperParameters):
         self.pixel_resize_value = 64
         self.pixel_resize_for_visualize = 64
         self.results_folder = "mnist_Example_Network"
-        # self.adam_specify_learning_rate = True
-        # self.adam_alpha = 0.001
-        # self.adam_decay_rate = .0001
+        self.adam_specify_learning_rate = True
+        self.adam_alpha = 0.001
+        self.adam_decay_rate = .0001
 
 
 
