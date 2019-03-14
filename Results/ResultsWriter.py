@@ -4,6 +4,7 @@ import pickle
 import shutil
 
 import cv2
+from keras.engine.saving import load_model
 
 
 class ResultsWriter:
@@ -12,12 +13,23 @@ class ResultsWriter:
     file_to_print_model_history_to = "loss_history.txt"
     model = None
     root_file_path = None
+    model = None
 
     def __init__(self, model_hyper_parameters):
         self.parameters = model_hyper_parameters
         self.root_file_path = "../Results/" + self.parameters.results_folder
+        self.load_old_model_if_present()
         self.delete_folder_and_create_new_empty_folder(self.root_file_path)
         self.delete_folder_and_create_new_empty_folder(self.root_file_path + "/images")
+        self.save_model_if_present()
+
+    def load_old_model_if_present(self):
+        if self.parameters.load_model:
+            self.model = load_model(self.parameters.working_model_path + self.parameters.model_name)
+
+    def save_model_if_present(self):
+        if self.parameters.load_model:
+            self.model.save(self.parameters.working_model_path + self.parameters.model_name)
 
     def write_hyper_parameters_to_file(self):
         with open(self.root_file_path + "/" + self.file_to_print_parameters_to, 'w') as output:
@@ -30,8 +42,6 @@ class ResultsWriter:
             output.write(repr(self.model.history.history['val_loss']) + '\n')
             output.write('loss/The training loss: \n')
             output.write(repr(self.model.history.history['loss']) + '\n')
-
-
 
     def write_image_matrix_to_files(self, image_matrix, name):
         i = 0

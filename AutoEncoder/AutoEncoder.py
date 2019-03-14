@@ -29,26 +29,12 @@ class AutoEncoder:
     def __init__(self, model_hyper_parameters):
         self.hyper_params = model_hyper_parameters
 
-    # Overall we can think of regularizers as adding a penality for the model being too complex.
-    #   To remember this think about ho
-
-    # Essentially what KL divergence does is it pentalizes terms for being too far from a particular value
-    # This is used on particular layers to enforce a particular neuron firing to a particular feature being seen.
-    # I want this because I want any given feature to fire for a particular object that the network thinks it is
-    # Then temporally when
-
-    # L1 regularization also known as Lasso regression: Lasso regression adds extra loss for weights that are not zero
-    # This is in an effort to reduce the number of activations that matter  Lasso does this by adding the the abs of the
-    # weights
-
-    # L2 regularization also known as Ridge regression: this is the same as L1 except it squares values.
     @staticmethod
     def get_regularizer():
         return None
 
     @staticmethod
     def get_initializer():
-        # return SparceInitializer()
         return RandomUniform()
 
     @staticmethod

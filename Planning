@@ -1,0 +1,26 @@
+3/15:
+    Get color Images training and working.
+    Finish writing this plan. DONE
+    Get results and tensorboard models saving to the the appropriate results folder. DONE
+    Get good results using a cnn.
+    Get good results using a cnn with color.
+    ReRead UNET and start to apply.
+    Get my mac set up to train, and start training on it
+    Look at and read about the following methods:
+        Instance Segmentation
+        Mask RCN unit
+        Auto coloration
+3/22:
+    Get image Segmentation working on simple synthesized data.  Like the animations data that I have produced
+3/29:
+    Get image Segmentation working on simple synthesized data.
+4/5:
+    Train a good object classifier on the animation data.
+4/12:
+    Link the object classifier with the Segmentation model to be able to link features together.
+4/19:
+    Link the object classifier with the Segmentation model to be able to link features together.
+4/26:
+    Attempt to get this working with real images.
+5/3:
+    Write a paper explaining everything and turn it in.

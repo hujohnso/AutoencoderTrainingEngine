@@ -54,32 +54,32 @@ class ModelHyperParameters(object):
     tensor_board_directory = base_file_path + "tensor_board_models"
 
 
-
 class ModelHyperParametersRealImagesGray(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 500
-        self.number_of_images = 100
-        self.number_of_images_for_validation = 10
-        self.batch_size = 100
-        self.model_name = "real_images_grey_alpha.h5"
+        self.number_of_epochs_for_training = 15
+        self.number_of_images = 5
+        self.number_of_images_for_validation = 1
+        self.batch_size = 5
         self.load_model = True
         self.pixel_resize_value = 64
         self.adam_specify_learning_rate = True
-        self.adam_alpha = 0.00001
+        self.adam_alpha = 0.000001
         self.adam_decay_rate = None
+        self.results_folder = "print_in_the_correct_location"
+        self.model_name = self.results_folder + ".h5"
+        self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
         self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
         self.file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/train"
-        self.results_folder = "real_images_grey_alpha"
-        self.tensor_board_directory = ModelHyperParameters.base_file_path + self.results_folder
+        self.tensor_board_directory = ModelHyperParameters.base_file_path + "Results/" + self.results_folder + "/"
 
 
 class ModelHyperParametersRealImagesColor(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 1000
-        self.number_of_images = 10
-        self.batch_size = 10
+        self.number_of_epochs_for_training = 500
+        self.number_of_images = 500
+        self.batch_size = 48
         self.model_name = "real_image_model_color.h5"
         self.load_model = False
         self.as_gray = False
@@ -107,23 +107,23 @@ class ModelHyperParametersAnimationGrey(ModelHyperParameters):
 class ModelHyperParametersMNIST(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 50
+        self.number_of_epochs_for_training = 1500
         self.batch_size = 256
         self.as_gray = True
-        self.number_of_images = 1024
-        self.number_of_images_for_validation = 128
-        self.model_name = "mnist_Example_Network.h5"
-        self.load_model = True
+        self.number_of_images = 5016
+        self.number_of_images_for_validation = 256
+        self.model_name = "mnist_2048.h5"
+        self.load_model = False
         self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mnist_jpgfiles/train"
         self.file_path_for_training_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mnist_jpgfiles/test"
         self.type_of_transformation = ImageManipulationType.PIXEL
         self.image_rescale_value = 1.0 / 25
         self.pixel_resize_value = 64
         self.pixel_resize_for_visualize = 64
-        self.results_folder = "mnist_Example_Network"
+        self.results_folder = "mnist_2048_CONV_NET"
         self.adam_specify_learning_rate = True
-        self.adam_alpha = 0.001
-        self.adam_decay_rate = .0001
+        self.adam_alpha = 0.00001
+        self.adam_decay_rate = None
 
 
 

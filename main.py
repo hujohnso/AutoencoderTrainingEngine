@@ -1,6 +1,7 @@
 import time
 
 from AutoEncoder import FullyConnectedAutoEncoder, MNISTExampleAutoEncoder
+from AutoEncoder.AlexNetConvolutionalAutoEncoder import AlexNetConvolutionalAutoEncoder
 from AutoEncoder.ConvFullyConnectedUpConv import ConvFullyConnectedUpConv
 from AutoEncoder.FullyConnectedAutoEncoderDeep import FullyConnectedAutoEncoderDeep
 from AutoEncoder.FullyConnectedAutoEncoderExponential import FullyConnectedAutoEncoderExponential
@@ -16,8 +17,8 @@ hyper_parameters = ModelHyperParametersRealImagesGray()
 # hyper_parameters = ModelHyperParametersRealImagesColor()
 #hyper_parameters = ModelHyperParametersAnimationGrey()
 # auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
-auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
-# auto_encoder = MNISTExampleAutoEncoder.MNISTExampleAutoEncoder(hyper_parameters)
+# auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
+auto_encoder = AlexNetConvolutionalAutoEncoder(hyper_parameters)
 # auto_encoder = ConvAutoEncoder.ConvAutoEncoder(hyper_parameters)
 # auto_encoder = Unet()
 
@@ -118,12 +119,12 @@ if __name__ == "__main__":
 # Try exponential
 # Co lab
 
-# Install tensorflow GPU
+# Install tensorflow GPU: I don't have NVIDIA GPU's so this is not possible
 # requirements / pip file to show what d
 # ependencies to download: DONE
 # Automate the video training to have a validation set: DONE
-# Auto encoder non image data (not text) high dimention, didgets, mnist
-# Get a cnn with mnist
+# Auto encoder non image data (not text) high dimention, didgets, mnist: DONE
+# Get a cnn with mnist: DONE
 # Fridays at noon
 # pip freeze: DONE
 # Get working with pre loaded datasets
@@ -139,13 +140,15 @@ if __name__ == "__main__":
 # rename Training engine to main.py: DONE
 
 
+# Write out plan
+# Reread Unet
+# Instance Segmentation
+# Mask RCN unit
+# Auto coloration
+# Get working in color
+# Get CNN working
+# Sementement neuron
 
-#Before help
-    #Set up hyperparmaters have different configurations to quickly switch out: DONE
-
-
-#Questions:
-    #Does the exploding gradients/ near zero gradients which leads residual networks affect gradient updates
 
 
 
