@@ -58,8 +58,8 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
     def __init__(self):
         super().__init__()
         self.number_of_epochs_for_training = 15
-        self.number_of_images = 5
-        self.number_of_images_for_validation = 1
+        self.number_of_images = 50
+        self.number_of_images_for_validation = 5
         self.batch_size = 5
         self.load_model = True
         self.pixel_resize_value = 64
@@ -77,17 +77,22 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
 class ModelHyperParametersRealImagesColor(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 500
-        self.number_of_images = 500
-        self.batch_size = 48
-        self.model_name = "real_image_model_color.h5"
+        self.number_of_epochs_for_training = 2000
+        self.number_of_images = 50
+        self.number_of_images_for_validation = 5
+        self.batch_size = 25
         self.load_model = False
         self.as_gray = False
         self.adam_specify_learning_rate = True
-        self.adam_alpha = 1e-1
-        self.adam_decay_rate = .0001
-        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + ""
-        self.file_path_for_training_set = ModelHyperParameters.base_file_path + ""
+        self.adam_alpha = 0.0000001
+        self.adam_decay_rate = None
+        self.pixel_resize_value = 64
+        self.results_folder = "color_alex_net_low_alpha"
+        self.model_name = self.results_folder + ".h5"
+        self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/train"
+        self.tensor_board_directory = ModelHyperParameters.base_file_path + "Results/" + self.results_folder + "/"
 
 
 class ModelHyperParametersAnimationGrey(ModelHyperParameters):

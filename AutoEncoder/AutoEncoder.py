@@ -193,20 +193,38 @@ class AutoEncoder:
     def get_results_matrix_and_transform_input_matrix(self, trained_model, input_matrix):
         number_of_result_images = 5
         size_of_input_matrix = input_matrix.shape[0] - 1
-        original_matrix = numpy.empty([number_of_result_images,
-                                       self.hyper_params.pixel_resize_for_visualize,
-                                       self.hyper_params.pixel_resize_for_visualize])
-        results_matrix = numpy.empty([number_of_result_images,
-                                      self.hyper_params.pixel_resize_for_visualize,
-                                      self.hyper_params.pixel_resize_for_visualize])
+        if self.hyper_params.as_gray:
+            original_matrix = numpy.empty([number_of_result_images,
+                                           self.hyper_params.pixel_resize_for_visualize,
+                                           self.hyper_params.pixel_resize_for_visualize])
+            results_matrix = numpy.empty([number_of_result_images,
+                                          self.hyper_params.pixel_resize_for_visualize,
+                                          self.hyper_params.pixel_resize_for_visualize])
+        else:
+            original_matrix = numpy.empty([number_of_result_images,
+                                           self.hyper_params.pixel_resize_for_visualize,
+                                           self.hyper_params.pixel_resize_for_visualize,
+                                           self.image_depth_after_rescale])
+            results_matrix = numpy.empty([number_of_result_images,
+                                          self.hyper_params.pixel_resize_for_visualize,
+                                          self.hyper_params.pixel_resize_for_visualize,
+                                          self.image_depth_after_rescale])
         for x in range(number_of_result_images):
             image = input_matrix[rand.randint(0, size_of_input_matrix)]
-            original_matrix[x, :, :] = self.reformat_auto_encoder_format(image)
-            results_matrix[x, :, :] = self.reformat_auto_encoder_format(
-                trained_model.predict(image.reshape(1,
-                                                    self.image_width_after_rescale,
-                                                    self.image_height_after_rescale,
-                                                    self.image_depth_after_rescale)))
+            if self.hyper_params.as_gray:
+                original_matrix[x, :, :] = self.reformat_auto_encoder_format(image)
+                results_matrix[x, :, :] = self.reformat_auto_encoder_format(
+                    trained_model.predict(image.reshape(1,
+                                                        self.image_width_after_rescale,
+                                                        self.image_height_after_rescale,
+                                                        self.image_depth_after_rescale)))
+            else:
+                original_matrix[x, :, :, :] = self.reformat_auto_encoder_format(image)
+                results_matrix[x, :, :, :] = self.reformat_auto_encoder_format(
+                    trained_model.predict(image.reshape(1,
+                                                        self.image_width_after_rescale,
+                                                        self.image_height_after_rescale,
+                                                        self.image_depth_after_rescale)))
         return original_matrix, results_matrix
 
     def get_random_image_for_visualize(self, folder_containing_images):
@@ -237,7 +255,7 @@ class AutoEncoder:
     def compile_autoencoder(self, auto_encoder):
         if self.hyper_params.adam_specify_learning_rate and not self.hyper_params.adam_decay_rate is None:
             auto_encoder.compile(optimizer=Adam(lr=self.hyper_params.adam_alpha,
-                                 decay=self.hyper_params.adam_decay_rate),
+                                                decay=self.hyper_params.adam_decay_rate),
                                  loss='mean_squared_error',
                                  metrics=['binary_crossentropy'])
         elif self.hyper_params.adam_specify_learning_rate and self.hyper_params.adam_decay_rate is None:

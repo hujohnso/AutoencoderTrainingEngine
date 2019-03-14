@@ -12,9 +12,9 @@ from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor
 # hyper_parameters = ModelHyperParameters()
 from Results import ResultsWriter
 
-hyper_parameters = ModelHyperParametersRealImagesGray()
+# hyper_parameters = ModelHyperParametersRealImagesGray()
 # hyper_parameters = ModelHyperParametersMNIST()
-# hyper_parameters = ModelHyperParametersRealImagesColor()
+hyper_parameters = ModelHyperParametersRealImagesColor()
 #hyper_parameters = ModelHyperParametersAnimationGrey()
 # auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
 # auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
