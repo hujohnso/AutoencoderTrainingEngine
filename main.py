@@ -18,9 +18,10 @@ hyper_parameters = ModelHyperParametersRealImagesColor()
 #hyper_parameters = ModelHyperParametersAnimationGrey()
 # auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
 # auto_encoder = FullyConnectedAutoEncoder.FullyConnectedAutoEncoder(hyper_parameters)
-auto_encoder = AlexNetConvolutionalAutoEncoder(hyper_parameters)
+# auto_encoder = AlexNetConvolutionalAutoEncoder(hyper_parameters)
 # auto_encoder = ConvAutoEncoder.ConvAutoEncoder(hyper_parameters)
 # auto_encoder = Unet()
+auto_encoder = MNISTExampleAutoEncoder.MNISTExampleAutoEncoder(hyper_parameters)
 
 
 def timer(executable, function_executed):

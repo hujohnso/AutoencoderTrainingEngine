@@ -20,7 +20,7 @@ class ConvAutoEncoder(AutoEncoder):
         input_image = Input(shape=(self.image_width_after_rescale,
                                    self.image_height_after_rescale,
                                    self.image_depth_after_rescale))
-        encoded = Conv2D(16, (3, 3), activation='relu', padding='same')(input_image)
+        encoded = Conv2D(16, (3, 3), activation='relu', padding='same', kernel_initializer=self.get_initializer())(input_image)
         encoded = Flatten()(encoded)
         decoded = Dense(flattened_vector_size,
                         activation='relu', kernel_initializer=self.get_initializer(),

@@ -1,0 +1,27 @@
+
+
+------------------Regularization notes---------------------------
+Regularizers are adding a penalty for the model being too complex.
+
+Essentially what KL divergence does is it penalizes terms for being too far from a particular value
+This is used on particular layers to enforce a particular neuron firing to a particular feature being seen.
+I want this because I want any given feature to fire for a particular object that the network thinks it is
+Then temporally when
+
+L1 regularization also known as Lasso regression: Lasso regression adds extra loss for weights that are not zero
+This is in an effort to reduce the number of activations that matter  Lasso does this by adding the the abs of the
+weights
+
+L2 regularization also known as Ridge regression: this is the same as L1 except it squares values.
+
+------------------Instance Segmentation notes---------------------------
+Semantic segmentation: Identify the object category of each pixel for every known object within an image.
+
+Instance Segmentation: Identify each object instance of each pixel for every known object within an image.  Labels
+    are instance-aware
+
+Occlusion sensitivity:  So in a given classification network if you occlude (essentially grey out) a particular portion
+    of the image how does this effect the probability that the object is in the frame.  In the explanation of this it
+    has a man with a french horn and a trained convolutional neural network.  Only when you put a box over the horn
+    does can the network no longer classify the photo as the horn.
+

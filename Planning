@@ -1,17 +1,28 @@
 3/15:
     Get color Images training and working.
-    Finish writing this plan. DONE
+    Finish writing initial plan. DONE
     Get results and tensorboard models saving to the the appropriate results folder. DONE
     Get good results using a cnn.
+        -real_images_alex_net_500
+        mnist_2048
     Get good results using a cnn with color.
-    ReRead UNET and start to apply.
+    ReRead UNET and start to apply. DONE
     Get my mac set up to train, and start training on it
     Look at and read about the following methods:
-        Instance Segmentation
-        Mask RCN unit
-        Auto coloration
+        Instance Segmentation: Identify each object instance of each pixel for every known object within an image.  Labels
+            are instance-aware
+
+        Mask RCN unit:  This is a version of faster RCNN that outputs a mask to the different objects.
+        I really don't like the above methods because they require pre trained networks to operate.
+        The whole point of what I want to do is to not need any labeled photos.
+
+        Auto coloration: This is essentially a way to use a CNN to apply color to black and white photos.
 3/22:
     Get image Segmentation working on simple synthesized data.  Like the animations data that I have produced
+        Set up a way to build segmented data on images.  I think for now it would be good to just do this with
+            animations because your idea doesn't really need real images to show the method.
+        set up data agumentation
+        Build a bunch of animations
 3/29:
     Get image Segmentation working on simple synthesized data.
 4/5:
@@ -24,3 +35,5 @@
     Attempt to get this working with real images.
 5/3:
     Write a paper explaining everything and turn it in.
+
+

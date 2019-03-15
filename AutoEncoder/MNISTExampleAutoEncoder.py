@@ -21,13 +21,13 @@ class MNISTExampleAutoEncoder(AutoEncoder):
         input_image = Input(shape=(self.image_width_after_rescale,
                                    self.image_height_after_rescale,
                                    self.image_depth_after_rescale))
-        encoded = Conv2D(32, kernel_size=(3, 3), activation='linear')(input_image)
-        encoded = Conv2D(64, (3, 3), activation='linear')(encoded)
+        encoded = Conv2D(32, kernel_size=(3, 3), activation='linear', kernel_initializer=self.get_initializer())(input_image)
+        encoded = Conv2D(64, (3, 3), activation='linear', kernel_initializer=self.get_initializer())(encoded)
         encoded = Dropout(0.25)(encoded)
         encoded = Flatten()(encoded)
-        decoded = Dense(128, activation='linear')(encoded)
+        decoded = Dense(128, activation='linear', kernel_initializer=self.get_initializer())(encoded)
         decoded = Dropout(0.5)(decoded)
-        decoded = Dense(flattened_vector_size, activation='linear')(decoded)
+        decoded = Dense(flattened_vector_size, activation='linear', kernel_initializer=self.get_initializer())(decoded)
         auto_encoder = Model(input_image, decoded)
         self.compile_autoencoder(auto_encoder)
         print(auto_encoder.summary())
