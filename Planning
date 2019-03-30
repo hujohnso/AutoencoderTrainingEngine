@@ -8,6 +8,7 @@
     Get good results using a cnn with color.
     ReRead UNET and start to apply. DONE
     Get my mac set up to train, and start training on it
+
     Look at and read about the following methods:
         Instance Segmentation: Identify each object instance of each pixel for every known object within an image.  Labels
             are instance-aware
@@ -23,6 +24,15 @@
             animations because your idea doesn't really need real images to show the method.
         set up data agumentation
         Build a bunch of animations
+        Try a pretrained uNet
+        At least try and do W-net
+        Fully understand what unet outputs
+        Edge distance, centroid distance
+        Run unet with synthetic
+        Step 1: Square, circle, and triangle
+        Step 2: Morphing
+        Step 3: Youtube
+
 3/29:
     Get image Segmentation working on simple synthesized data.
 4/5:

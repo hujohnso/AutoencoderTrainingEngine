@@ -41,7 +41,6 @@ def run_number_of_images_experiment():
         hyper_parameters.batch_size = hyper_parameters.number_of_images
         run_all_steps(auto_encoder, hyper_parameters)
 
-
 def run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, name):
     for i in range(3):
         hyper_parameters_local.number_of_images = (i + 1) * 100

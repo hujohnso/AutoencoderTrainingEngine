@@ -77,17 +77,17 @@ class ModelHyperParametersRealImagesGray(ModelHyperParameters):
 class ModelHyperParametersRealImagesColor(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 2500
-        self.number_of_images = 32
-        self.number_of_images_for_validation = 4
+        self.number_of_epochs_for_training = 2
+        self.number_of_images = 300
+        self.number_of_images_for_validation = 50
         self.batch_size = 32
-        self.load_model = True
+        self.load_model = False
         self.as_gray = False
         self.adam_specify_learning_rate = True
         self.adam_alpha = 0.00001
         self.adam_decay_rate = None
         self.pixel_resize_value = 64
-        self.results_folder = "color_mnist_conv_alpha_00001"
+        self.results_folder = "terrible_2"
         self.model_name = self.results_folder + ".h5"
         self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
         self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/tmp/validation"
