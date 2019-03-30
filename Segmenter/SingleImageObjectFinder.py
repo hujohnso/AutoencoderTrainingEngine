@@ -3,9 +3,9 @@ import cv2
 from Segmenter.UnetLoader import UnetLoader
 
 
-class SingleImageProcessor:
+class SingleImageObjectFinder:
     set_of_objects = set()
-    object_index = 20
+    object_index = 0
     new_image = None
     segmenter = None
     is_object_thresh_hold = .001
@@ -59,9 +59,11 @@ class SingleImageProcessor:
         self.process_single_image(image)
 
     def process_single_image(self, image_to_process):
+        self.reset_variables()
         seg_image = self.segmenter.predict(image_to_process.reshape(1, 224, 224, 3)).reshape(224, 224, 1)
         self.label_image(seg_image)
         self.filter_object_noise(seg_image)
+        return self.set_of_objects
 
     def label_image(self, image_to_process):
         for i in range(224):
@@ -69,7 +71,7 @@ class SingleImageProcessor:
                 if self.check_if_pixel_tagged_or_not_one(i, j, image_to_process):
                     self.set_of_objects.add(self.object_index)
                     self.cluster_and_label_a_group_of_pixels(i, j, image_to_process)
-                    self.object_index += 10
+                    self.object_index += 1
 
     def close_to(self, float_val, desired_val, tol):
         value_to_check = float_val / desired_val
@@ -95,3 +97,7 @@ class SingleImageProcessor:
                         if pixels_in_object[i, j] == 1:
                             image[i, j] = 0
         self.set_of_objects.remove(objects_to_remove)
+
+    def reset_variables(self):
+        self.set_of_objects.clear()
+        self.object_index = 0
