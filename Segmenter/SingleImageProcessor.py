@@ -94,4 +94,4 @@ class SingleImageProcessor:
                     for j in range(image.shape[1]):
                         if pixels_in_object[i, j] == 1:
                             image[i, j] = 0
-        self.set_of_objects.rgit emove(objects_to_remove)
+        self.set_of_objects.remove(objects_to_remove)
