@@ -1,8 +1,3 @@
-import queue
-
-from Segmenter.Centroid import Centroid
-
-
 class StateObject:
     # 50 might be too large.  I am not sure how quickly the centroids will change direction
     # centroids = []

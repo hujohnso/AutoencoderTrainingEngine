@@ -2,7 +2,7 @@
 # don't need to be confined to that class
 import math
 
-from Segmenter.Centroid import Centroid
+from Segmenter.model.Centroid import Centroid
 
 
 class StateObjectHelpers:

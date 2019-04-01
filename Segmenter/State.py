@@ -1,13 +1,12 @@
 import copy
 import numpy
 import os
-import shutil
 
 import cv2
 
-from Segmenter import StateObjectHelpers
+from Segmenter.Utils import StateObjectHelpers
 from Segmenter.SingleImageObjectFinder import SingleImageObjectFinder
-from Segmenter.StateObject import StateObject
+from Segmenter.model.StateObject import StateObject
 
 
 class State:
@@ -90,8 +89,6 @@ class State:
         for i in range(len(chosen_indices)):
             list_of_current_state_objects[chosen_indices[i]].current_mapped_number = list_of_new_state_objects[i].objectId
         return list_of_current_state_objects
-
-
 
     def create_new_set_of_state_objects_from_set_of_ids(self, set_of_numbered_object_labels, segmented_image):
         new_possible_objects = []

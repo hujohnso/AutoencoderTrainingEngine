@@ -1,27 +1,24 @@
-import copy
-import sys
-import cv2
-from keras.engine.saving import load_model
-from keras.optimizers import Adam
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import tensorflow as tf
-from Segmenter.zf_unet_224_model import ZF_UNET_224, dice_coef_loss, dice_coef
+from Segmenter.ImageStreamCreator import ImageStreamCreator
+from Segmenter.State import State
 
+
+class SegmentLabelRunner:
+    folder_with_frames = None
+
+    def __init__(self, folder_with_frames):
+        self.folder_with_frames = folder_with_frames
+
+    def run_segment_label_runner(self):
+        image_stream_creator = ImageStreamCreator(self.folder_with_frames)
+        image_stream = image_stream_creator.get_segmented_image_stream()
+        state = State("squareCircleStar")
+        for image in image_stream:
+            state.update_state(image)
 
 
 
 
 
 if __name__ == "__main__":
-    image = cv2.imread("/home/hujohnso/Documents/Research2018/FrameExtractor/Animations/squareCircleStar.0007.png")
-    image = cv2.resize(image, (224, 224))
-
-
-
-    for object_number in set_of_objects:
-        print_image_by_value(object_number, new_image)
-
-
-
-
+    segment_label_runner = SegmentLabelRunner("../FrameExtractor/Animations/squareCircleStar/")
+    segment_label_runner.run_segment_label_runner()
