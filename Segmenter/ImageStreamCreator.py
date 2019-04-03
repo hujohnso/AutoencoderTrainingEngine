@@ -56,10 +56,10 @@ class ImageStreamCreator:
                     matrix = numpy.empty([len(cv2.os.listdir(folder_path)),
                                           self.u_net_required_dim,
                                           self.u_net_required_dim])
-                if is_in_color:
-                    matrix[num_in_matrix, :, :, :] = image
-                else:
-                    matrix[num_in_matrix, :, :] = image
+            if is_in_color:
+                matrix[num_in_matrix, :, :, :] = image
+            else:
+                matrix[num_in_matrix, :, :] = image
             num_in_matrix += 1
         return matrix
 

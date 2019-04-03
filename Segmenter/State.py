@@ -45,8 +45,7 @@ class State:
                                                                                   self.current_image,
                                                                                   self.state_object_set)
             self.sort_state_objects_into_folders(self.current_image)
-        self.current_frame_number += 0
-
+        self.current_frame_number += 1
 
     def print_image_by_state_object_id(self, state_object, image):
         image_to_show = copy.copy(image)
@@ -56,7 +55,8 @@ class State:
                     image_to_show[i, j] = 0
                 else:
                     image_to_show[i, j] = 20
-        cv2.imwrite(state_object.get_folder_path() + "%d.png" % state_object.get_number_of_times_recorded(), image_to_show)
+        cv2.imwrite(state_object.get_folder_path() + "%d.png" % state_object.get_number_of_times_recorded(),
+                    image_to_show)
         state_object.advance_number_of_times_recorded()
 
     def sort_state_objects_into_folders(self, image):
@@ -101,8 +101,7 @@ class State:
             minimum_centroid_distance = None
             minimum_centroid_index: float
             for current_state_object_index in range(probability_matrix.shape[1]):
-                if minimum_centroid_distance is not None and probability_matrix[
-                    new_state_object_index, current_state_object_index] < minimum_centroid_distance:
+                if minimum_centroid_distance is not None and probability_matrix[new_state_object_index, current_state_object_index] < minimum_centroid_distance:
                     if minimum_centroid_index not in chosen_indices:
                         minimum_centroid_index = current_state_object_index
                         minimum_centroid_distance = probability_matrix[

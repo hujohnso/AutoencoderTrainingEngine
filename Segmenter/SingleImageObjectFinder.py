@@ -10,15 +10,16 @@ class SingleImageObjectFinder:
     object_index = 0
     new_image = None
     segmenter = None
-    is_object_thresh_hold = .001
-    # The object must be 1/100 th of the entire frame to be considered an object
+    is_object_thresh_hold = .005
+    float_comparison_tolerance = .0001
+    # The object must be 5/100 th of the entire frame to be considered an object
 
     def __init__(self):
         u_net_loader = UnetLoader()
         self.segmenter = u_net_loader.load_unet()
 
     def check_if_pixel_tagged_or_not_one(self, row, column, img):
-        if img[row, column] == 1 and not self.set_of_objects.issuperset({int(img[row, column])}):
+        if self.close_to(img[row, column], float(1), self.float_comparison_tolerance) and not self.set_of_objects.issuperset({int(img[row, column])}):
             return True
         else:
             return False
@@ -68,6 +69,7 @@ class SingleImageObjectFinder:
 
     def label_image(self, image_to_process):
         sys.setrecursionlimit(224 * 224)
+        #i = 220, j = 24
         for i in range(224):
             for j in range(224):
                 if self.check_if_pixel_tagged_or_not_one(i, j, image_to_process):
@@ -98,6 +100,8 @@ class SingleImageObjectFinder:
                     for j in range(image.shape[1]):
                         if pixels_in_object[i, j] == 1:
                             image[i, j] = 0
+            number_of_pixels_in_object = 0
+            pixels_in_object.fill(0)
         for objects in objects_to_remove:
             self.set_of_objects.remove(objects)
 
