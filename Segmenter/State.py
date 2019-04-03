@@ -17,10 +17,10 @@ class State:
     current_frame_number = 0
     current_image = None
     is_object_thresh_hold = .001
-    single_image_processor = None
+    single_image_object_finder = None
     state_object_set = None
     state_object_set_history = None
-    output_folder_template = "./OutputImages/object%d"
+    output_folder_template = "../Segmenter/Images/OutputImages/object%d/"
 
     def __init__(self, root_video_name):
         self.single_image_object_finder = SingleImageObjectFinder()
@@ -30,16 +30,23 @@ class State:
 
     def initialize_state(self, initial_segmented_image):
         self.current_image = initial_segmented_image
-        list_of_numbered_object_labels = self.single_image_processor.process_single_image(self.current_image)
+        list_of_numbered_object_labels = self.single_image_object_finder.process_single_image(self.current_image)
         self.state_object_set = self.create_new_set_of_state_objects_from_set_of_ids(list_of_numbered_object_labels,
                                                                                      self.current_image)
+        self.sort_state_objects_into_folders(initial_segmented_image)
 
     def update_state(self, segmented_image_for_update):
-        self.current_image = segmented_image_for_update
-        set_of_numbered_object_labels = self.single_image_processor.process_single_image(self.current_image)
-        self.state_object_set = self.map_single_image_output_to_state_objects(set_of_numbered_object_labels,
-                                                                              self.current_image, self.state_object_set)
-        self.sort_state_objects_into_folders(self.current_image)
+        if self.current_frame_number == 0:
+            self.initialize_state(segmented_image_for_update)
+        else:
+            self.current_image = segmented_image_for_update
+            set_of_numbered_object_labels = self.single_image_object_finder.process_single_image(self.current_image)
+            self.state_object_set = self.map_single_image_output_to_state_objects(set_of_numbered_object_labels,
+                                                                                  self.current_image,
+                                                                                  self.state_object_set)
+            self.sort_state_objects_into_folders(self.current_image)
+        self.current_frame_number += 0
+
 
     def print_image_by_state_object_id(self, state_object, image):
         image_to_show = copy.copy(image)
@@ -47,9 +54,10 @@ class State:
             for j in range(image_to_show.shape[1]):
                 if image_to_show[i, j] != state_object.current_mapped_number:
                     image_to_show[i, j] = 0
-            cv2.imwrite(state_object.get_folder_path() +
-                        self.root_video_name + "/%d.png" % state_object.get_number_of_times_recorded(), image_to_show)
-            state_object.advance_number_of_times_recorded()
+                else:
+                    image_to_show[i, j] = 20
+        cv2.imwrite(state_object.get_folder_path() + "%d.png" % state_object.get_number_of_times_recorded(), image_to_show)
+        state_object.advance_number_of_times_recorded()
 
     def sort_state_objects_into_folders(self, image):
         for state_object in self.state_object_set:

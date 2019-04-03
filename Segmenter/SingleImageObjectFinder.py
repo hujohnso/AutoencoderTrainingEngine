@@ -1,3 +1,5 @@
+import sys
+
 import numpy
 import cv2
 from Segmenter.UnetLoader import UnetLoader
@@ -60,12 +62,12 @@ class SingleImageObjectFinder:
 
     def process_single_image(self, image_to_process):
         self.reset_variables()
-        seg_image = self.segmenter.predict(image_to_process.reshape(1, 224, 224, 3)).reshape(224, 224, 1)
-        self.label_image(seg_image)
-        self.filter_object_noise(seg_image)
+        self.label_image(image_to_process)
+        self.filter_object_noise(image_to_process)
         return self.set_of_objects
 
     def label_image(self, image_to_process):
+        sys.setrecursionlimit(224 * 224)
         for i in range(224):
             for j in range(224):
                 if self.check_if_pixel_tagged_or_not_one(i, j, image_to_process):
@@ -90,14 +92,15 @@ class SingleImageObjectFinder:
                     if image[i, j] == object_index:
                         number_of_pixels_in_object += 1
                         pixels_in_object[i, j] = 1
-            if pixels_in_object < self.is_object_thresh_hold * image.shape[0] * image.shape[1]:
+            if number_of_pixels_in_object < self.is_object_thresh_hold * image.shape[0] * image.shape[1]:
                 objects_to_remove.add(object_index)
                 for i in range(image.shape[0]):
                     for j in range(image.shape[1]):
                         if pixels_in_object[i, j] == 1:
                             image[i, j] = 0
-        self.set_of_objects.remove(objects_to_remove)
+        for objects in objects_to_remove:
+            self.set_of_objects.remove(objects)
 
     def reset_variables(self):
         self.set_of_objects.clear()
-        self.object_index = 0
+        self.object_index = 2

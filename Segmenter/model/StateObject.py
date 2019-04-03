@@ -12,6 +12,7 @@ class StateObject:
 
     def __init__(self, object_id):
         self.object_id = object_id
+        self.current_mapped_number = object_id
         self.number_of_times_recorded = 0
 
     def set_current_pixels(self, current_pixels):

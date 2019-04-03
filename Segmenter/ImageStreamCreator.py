@@ -17,8 +17,9 @@ class ImageStreamCreator:
 
     # This logic is simular to the logic in Frame AutoEncoder.  Consider making a util for this
     def get_segmented_image_stream(self):
-        if self.check_to_see_if_segmented_image_folder_exists(self.root_path_for_segmented_images + "/" + self.video_name):
-            return self.load_images_from_a_file(self.root_path_for_segmented_images + "/" + self.video_name)
+        if self.check_to_see_if_segmented_image_folder_exists(
+                self.root_path_for_segmented_images + "/" + self.video_name):
+            return self.load_images_from_a_file(self.root_path_for_segmented_images + "/" + self.video_name, False)
         else:
             return self.load_original_images_and_segment()
 
@@ -28,12 +29,12 @@ class ImageStreamCreator:
         return False
 
     def load_original_images_and_segment(self):
-        matrix = self.load_images_from_a_file(self.folder_with_original_images)
+        matrix = self.load_images_from_a_file(self.folder_with_original_images, True)
         matrix = self.segment_image_stream(matrix)
         self.save_segmented_images(matrix, self.root_path_for_segmented_images, self.video_name)
         return matrix
 
-    def load_images_from_a_file(self, folder_path):
+    def load_images_from_a_file(self, folder_path, is_in_color):
         matrix = None
         num_in_matrix = 0
         file_names = cv2.os.listdir(folder_path)
@@ -41,13 +42,24 @@ class ImageStreamCreator:
         for filename in file_names:
             if not filename.endswith(".png") and not filename.endswith(".jpg"):
                 continue
-            image = cv2.imread(folder_path + "/" + filename, 1)
+            if is_in_color:
+                image = cv2.imread(folder_path + "/" + filename, 1)
+            else:
+                image = cv2.imread(folder_path + "/" + filename, 0)
             image = cv2.resize(image, (self.u_net_required_dim, self.u_net_required_dim))
             if num_in_matrix == 0:
-                matrix = numpy.empty([len(cv2.os.listdir(folder_path)),
-                                      self.u_net_required_dim,
-                                      self.u_net_required_dim, 3])
-            matrix[num_in_matrix, :, :, :] = image
+                if is_in_color:
+                    matrix = numpy.empty([len(cv2.os.listdir(folder_path)),
+                                          self.u_net_required_dim,
+                                          self.u_net_required_dim, 3])
+                else:
+                    matrix = numpy.empty([len(cv2.os.listdir(folder_path)),
+                                          self.u_net_required_dim,
+                                          self.u_net_required_dim])
+                if is_in_color:
+                    matrix[num_in_matrix, :, :, :] = image
+                else:
+                    matrix[num_in_matrix, :, :] = image
             num_in_matrix += 1
         return matrix
 
