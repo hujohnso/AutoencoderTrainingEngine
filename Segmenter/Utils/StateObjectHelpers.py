@@ -12,8 +12,8 @@ class StateObjectHelpers:
         y_total = 0
         num_pixels = len(state_object.current_pixels)
         for i in range(num_pixels):
-            x_total += state_object.current_pixels[i, 0]
-            y_total += state_object.current_pixels[i, 1]
+            x_total += state_object.current_pixels[i][0]
+            y_total += state_object.current_pixels[i][1]
         return Centroid(x_total / num_pixels,
                         y_total / num_pixels)
 

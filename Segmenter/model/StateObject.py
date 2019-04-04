@@ -1,19 +1,16 @@
 class StateObject:
     # 50 might be too large.  I am not sure how quickly the centroids will change direction
     # centroids = []
-    current_centroid = None
-    object_id = None
-    # This is for if the labeler doesn't label the object with the same label as was before
-    current_mapped_number = None
-    current_pixels = []
-    current_momentum = None
-    number_of_times_recorded = None
-    folder_path = None
 
+    # This is for if the labeler doesn't label the object with the same label as was before
     def __init__(self, object_id):
         self.object_id = object_id
         self.current_mapped_number = object_id
         self.number_of_times_recorded = 0
+        self.current_pixels = []
+        self.current_momentum = None
+        self.folder_path = None
+        self.current_centroid = None
 
     def set_current_pixels(self, current_pixels):
         self.current_pixels = current_pixels

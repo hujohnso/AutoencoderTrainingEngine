@@ -33,6 +33,7 @@ class State:
         list_of_numbered_object_labels = self.single_image_object_finder.process_single_image(self.current_image)
         self.state_object_set = self.create_new_set_of_state_objects_from_set_of_ids(list_of_numbered_object_labels,
                                                                                      self.current_image)
+        self.find_centroids(self.state_object_set)
         self.sort_state_objects_into_folders(initial_segmented_image)
 
     def update_state(self, segmented_image_for_update):
@@ -85,27 +86,27 @@ class State:
     def create_and_fill_probability_matrix(self, set_of_new_state_objects, set_of_current_state_objects):
         if len(set_of_new_state_objects) != len(set_of_current_state_objects):
             print("One object disappeared :(")
-        probability_matrix = numpy.zeros(len(set_of_new_state_objects), len(set_of_current_state_objects))
+        probability_matrix = numpy.zeros((len(set_of_new_state_objects), len(set_of_current_state_objects)))
         for new_state_object_index in range(len(set_of_new_state_objects)):
             for current_state_object_index in range(len(set_of_current_state_objects)):
                 probability_matrix[new_state_object_index, current_state_object_index] = \
-                    StateObjectHelpers.StateObjectHelpers.get_centroid_distance(
-                        set_of_new_state_objects[new_state_object_index],
-                        set_of_current_state_objects[current_state_object_index])
+                    StateObjectHelpers.StateObjectHelpers.get_centroid_distance(set_of_new_state_objects[new_state_object_index].current_centroid,
+                                                                                set_of_current_state_objects[current_state_object_index].current_centroid)
         return probability_matrix
 
     # There could be a ton of ways to do this however for now I am just doing the simplest thing which is to choose the greedy way for now
     def traverse_the_probability_matrix(self, probability_matrix):
         chosen_indices = []
         for new_state_object_index in range(probability_matrix.shape[0]):
-            minimum_centroid_distance = None
-            minimum_centroid_index: float
+            minimum_centroid_distance = 244 * 244
+            minimum_centroid_index = 0
             for current_state_object_index in range(probability_matrix.shape[1]):
-                if minimum_centroid_distance is not None and probability_matrix[new_state_object_index, current_state_object_index] < minimum_centroid_distance:
+                if probability_matrix[new_state_object_index, current_state_object_index] < minimum_centroid_distance:
+                    minimum_centroid_index = current_state_object_index
                     if minimum_centroid_index not in chosen_indices:
-                        minimum_centroid_index = current_state_object_index
                         minimum_centroid_distance = probability_matrix[
                             new_state_object_index, current_state_object_index]
+
             chosen_indices.append(minimum_centroid_index)
         return chosen_indices
 
@@ -113,18 +114,17 @@ class State:
                                                               list_of_current_state_objects):
         for i in range(len(chosen_indices)):
             list_of_current_state_objects[chosen_indices[i]].current_mapped_number = list_of_new_state_objects[
-                i].objectId
+                i].object_id
         return list_of_current_state_objects
 
     def create_new_set_of_state_objects_from_set_of_ids(self, set_of_numbered_object_labels, segmented_image):
         new_possible_objects = []
         for object_label in set_of_numbered_object_labels:
-            current_object_to_add = StateObject(object_label)
+            new_possible_objects.append(StateObject(object_label))
             for i in range(segmented_image.shape[0]):
                 for j in range(segmented_image.shape[1]):
                     if segmented_image[i, j] == object_label:
-                        current_object_to_add.current_pixels.append((i, j))
-            new_possible_objects.append(current_object_to_add)
+                        new_possible_objects[-1].current_pixels.append((i, j))
         return new_possible_objects
 
     def find_centroids(self, list_of_state_objects):
