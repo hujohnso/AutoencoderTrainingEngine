@@ -2,8 +2,7 @@ from keras import Input, Model
 from keras.callbacks import TensorBoard
 from keras.layers import Conv2D, MaxPooling2D, Dropout, UpSampling2D, concatenate
 from keras.optimizers import Adam
-from tensorflow.python.keras import initializers
-from AutoEncoder.AutoEncoder import AutoEncoder
+from AutoEncoderTrainer.AutoEncoder import AutoEncoder
 
 
 class FullyConvolutionalAutoEncoder(AutoEncoder):

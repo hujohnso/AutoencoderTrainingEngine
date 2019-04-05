@@ -1,13 +1,9 @@
-from keras.optimizers import Adam
-
-from AutoEncoder.AutoEncoder import AutoEncoder
-from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, BatchNormalization, LeakyReLU, Add
-from keras import regularizers
-from keras.legacy import layers
-from keras.models import Sequential, Model
+from AutoEncoderTrainer.AutoEncoder import AutoEncoder
+from keras.layers import Input, Dense, Flatten
+from keras.models import Model
 
 
-class FullyConnectedAutoEncoderExponential(AutoEncoder):
+class FullyConnectedAutoEncoderHyperbolicTangent(AutoEncoder):
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
 
@@ -18,12 +14,12 @@ class FullyConnectedAutoEncoderExponential(AutoEncoder):
                                    self.image_depth_after_rescale))
         encoded = Flatten()(input_image)
         encoded = Dense(flattened_vector_size,
-                        activation='elu', kernel_initializer=self.get_initializer())(encoded)
+                        activation='tanh', kernel_initializer=self.get_initializer())(encoded)
         encoded = Dense(int(flattened_vector_size * .3),
-                        activation='elu',
+                        activation='tanh',
                         kernel_initializer=self.get_initializer())(encoded)
         decoded = Dense(flattened_vector_size,
-                        activation='elu', kernel_initializer=self.get_initializer())(encoded)
+                        activation='tanh', kernel_initializer=self.get_initializer())(encoded)
         auto_encoder = Model(input_image, decoded)
         self.compile_autoencoder(auto_encoder)
         print(auto_encoder.summary())

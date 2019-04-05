@@ -1,14 +1,7 @@
-from AutoEncoder.AutoEncoder import AutoEncoder
-from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, BatchNormalization, LeakyReLU, Add
-from keras import regularizers
-from keras.legacy import layers
-from keras.models import Sequential, Model
-import matplotlib.pyplot as plt
-import time
-import numpy
-from skimage import data, img_as_float, img_as_int
-from skimage.transform import rescale
-from keras.callbacks import TensorBoard
+from AutoEncoderTrainer.AutoEncoder import AutoEncoder
+from keras.layers import Input, Dense, Conv2D, Flatten
+from keras.models import Model
+
 
 #
 class ConvAutoEncoder(AutoEncoder):

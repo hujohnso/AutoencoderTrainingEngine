@@ -1,9 +1,9 @@
 from keras import Input, Model
 from keras.callbacks import TensorBoard
-from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Reshape, UpSampling2D
+from keras.layers import Conv2D, Flatten, Dense
 from keras.optimizers import Adam
 
-from AutoEncoder.AutoEncoder import AutoEncoder
+from AutoEncoderTrainer.AutoEncoder import AutoEncoder
 
 
 class ConvFullyConnectedUpConv(AutoEncoder):

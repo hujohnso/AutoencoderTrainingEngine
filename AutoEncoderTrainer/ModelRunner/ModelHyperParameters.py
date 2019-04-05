@@ -1,4 +1,4 @@
-from AutoEncoder.ImageManipulationType import ImageManipulationType
+from AutoEncoderTrainer.AutoEncoder import ImageManipulationType
 
 
 class ModelHyperParameters(object):

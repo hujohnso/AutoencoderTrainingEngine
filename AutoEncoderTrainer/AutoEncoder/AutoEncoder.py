@@ -1,23 +1,15 @@
-import gzip
-
 import cv2
 from keras.engine.saving import load_model
-from keras.initializers import RandomUniform, Zeros, Constant
+from keras.initializers import RandomUniform
 import abc
-from keras.layers import Input, Dense, Conv2D, MaxPooling2D, UpSampling2D, Flatten, BatchNormalization, LeakyReLU, Add
-from keras import regularizers
-from keras.legacy import layers
-from keras.models import Sequential, Model
 import matplotlib.pyplot as plt
-import time
 import numpy
 from keras.optimizers import Adam
-from skimage import data, img_as_float
 from skimage.transform import rescale
 from keras.callbacks import TensorBoard
 import random as rand
 
-from AutoEncoder.ImageManipulationType import ImageManipulationType
+from AutoEncoderTrainer.AutoEncoder import ImageManipulationType
 
 
 class AutoEncoder:

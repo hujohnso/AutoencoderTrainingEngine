@@ -1,16 +1,13 @@
 import time
 
-from AutoEncoder import FullyConnectedAutoEncoder, MNISTExampleAutoEncoder
-from AutoEncoder.AlexNetConvolutionalAutoEncoder import AlexNetConvolutionalAutoEncoder
-from AutoEncoder.ConvFullyConnectedUpConv import ConvFullyConnectedUpConv
-from AutoEncoder.FullyConnectedAutoEncoderDeep import FullyConnectedAutoEncoderDeep
-from AutoEncoder.FullyConnectedAutoEncoderExponential import FullyConnectedAutoEncoderExponential
-from AutoEncoder.FullyConnectedAutoEncoderHyperbolicTangent import FullyConnectedAutoEncoderHyperbolicTangent
-from ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, ModelHyperParametersRealImagesGray, \
-    ModelHyperParametersMNIST
+from AutoEncoderTrainer.AutoEncoder import FullyConnectedAutoEncoder, MNISTExampleAutoEncoder
+from AutoEncoderTrainer.AutoEncoder import FullyConnectedAutoEncoderDeep
+from AutoEncoderTrainer.AutoEncoder import FullyConnectedAutoEncoderExponential
+from AutoEncoderTrainer.AutoEncoder import FullyConnectedAutoEncoderHyperbolicTangent
+from AutoEncoderTrainer.ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, ModelHyperParametersRealImagesGray
 
 # hyper_parameters = ModelHyperParameters()
-from Results import ResultsWriter
+from AutoEncoderTrainer.Results import ResultsWriter
 
 # hyper_parameters = ModelHyperParametersRealImagesGray()
 # hyper_parameters = ModelHyperParametersMNIST()
