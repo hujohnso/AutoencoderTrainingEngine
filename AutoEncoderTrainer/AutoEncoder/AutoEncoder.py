@@ -9,7 +9,7 @@ from skimage.transform import rescale
 from keras.callbacks import TensorBoard
 import random as rand
 
-from AutoEncoderTrainer.AutoEncoder import ImageManipulationType
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions import ImageManipulationType
 
 
 class AutoEncoder:

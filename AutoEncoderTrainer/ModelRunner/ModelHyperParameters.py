@@ -1,9 +1,9 @@
-from AutoEncoderTrainer.AutoEncoder import ImageManipulationType
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions import ImageManipulationType
 
 
 class ModelHyperParameters(object):
     def __init__(self):
-        self.base_file_path = "../"
+        self.base_file_path = "../AutoEncoderTrainer/"
         self.file_path_for_frames = self.base_file_path + "FrameExtractor/Animations/"
         self.file_path_for_validation_set = self.base_file_path + ""
         self.file_path_for_training_set = self.base_file_path + ""
@@ -131,4 +131,22 @@ class ModelHyperParametersMNIST(ModelHyperParameters):
         self.adam_decay_rate = None
 
 
-
+class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
+    def __init__(self):
+        super().__init__()
+        self.number_of_epochs_for_training = 600
+        self.number_of_images = 120
+        self.number_of_images_for_validation = 10
+        self.batch_size = 32
+        self.load_model = False
+        self.as_gray = False
+        self.adam_specify_learning_rate = True
+        self.adam_alpha = 0.00001
+        self.adam_decay_rate = None
+        self.pixel_resize_value = 64
+        self.results_folder = "simplePolygon"
+        self.model_name = self.results_folder + ".h5"
+        self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "FrameExtractor/Animations/easyPolygon"
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + "FrameExtractor/Animations/easyPolygon"
+        self.tensor_board_directory = ModelHyperParameters.base_file_path + "Results/" + self.results_folder + "/"

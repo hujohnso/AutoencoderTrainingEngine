@@ -17,6 +17,6 @@ class SegmentLabelRunner:
             state.update_state(image)
 
 if __name__ == "__main__":
-    segment_label_runner = SegmentLabelRunner("../FrameExtractor/Animations/easyPolygon/", "easyPolygon")
+    segment_label_runner = SegmentLabelRunner("../AutoEncoderTrainer/FrameExtractor/Animations/easyPolygon/", "easyPolygon")
     segment_label_runner.run_segment_label_runner()
 

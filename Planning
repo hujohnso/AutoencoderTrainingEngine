@@ -22,28 +22,42 @@
     Get image Segmentation working on simple synthesized data.  Like the animations data that I have produced
         Set up a way to build segmented data on images.  I think for now it would be good to just do this with
             animations because your idea doesn't really need real images to show the method.
-        set up data agumentation
-        Build a bunch of animations
-        Try a pretrained uNet
-        At least try and do W-net
-        Fully understand what unet outputs
-        Edge distance, centroid distance
-        Run unet with synthetic
-        Step 1: Square, circle, and triangle
-        Step 2: Morphing
+
+        Build a bunch of animations DONE
+        Try a pretrained uNet DONE
+
+        Fully understand what unet outputs Done
+        Edge distance, centroid distance Done
+        Run unet with synthetic Done
+        Step 1: Square, circle, and triangle Done
+        Step 2: Morphing Done
         Step 3: Youtube
 
 3/29:
-    Get image Segmentation working on simple synthesized data.
+    Get image Segmentation working on simple synthesized data. DONE
 4/5:
-    Train a good object classifier on the animation data.
+    Train a good object classifier on the animation data. NOT DONE but different
 4/12:
-    Link the object classifier with the Segmentation model to be able to link features together.
+    -Go see DJ
+    -Link the object classifier with the Segmentation model
 4/19:
-    Link the object classifier with the Segmentation model to be able to link features together.
+    Link the object classifier with the Segmentation model
 4/26:
-    Attempt to get this working with real images.
+    Begin writing a paper
 5/3:
-    Write a paper explaining everything and turn it in.
+    Finish write a paper explaining everything and turn it in.
 
-#How the heck do I want to handle the random blobs that u-net spits out?
+Wish list:
+    set up data agumentation
+    Momentum
+    Get working on youtube images
+    At least try and do W-net
+    Attempt to get this working with real images.
+    Set up smart auto-encoder training engine.
+    Make the segment labeler able to handle objects that appear as well
+    Link objects together is they move with the same momentum (Might be a real image problem)
+
+Questions:
+    Is my linking plan sufficient?
+    How should I show results everything?
+    What do I want to feed to the object classifier?
