@@ -23,6 +23,10 @@ class ImageStreamCreator:
         else:
             return self.load_original_images_and_segment()
 
+    def get_original_images(self):
+        matrix = self.load_images_from_a_file(self.folder_with_original_images, True)
+        return matrix
+
     def check_to_see_if_segmented_image_folder_exists(self, filename):
         if cv2.os.path.isdir(filename) and len(cv2.os.listdir(filename)) > 0:
             return True
