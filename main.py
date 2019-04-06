@@ -1,11 +1,13 @@
 import time
 
-from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions import FullyConnectedAutoEncoderDeep, \
-    FullyConnectedAutoEncoder, FullyConnectedAutoEncoderHyperbolicTangent, FullyConnectedAutoEncoderExponential, \
-    MNISTExampleAutoEncoder
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions import MNISTExampleAutoEncoder, \
+    FullyConnectedAutoEncoderExponential, FullyConnectedAutoEncoderHyperbolicTangent, FullyConnectedAutoEncoder, \
+    FullyConnectedAutoEncoderDeep
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.ConvAutoEncoder import ConvAutoEncoder
+from AutoEncoderTrainer.AutoEncoderConverter import AutoEncoderConverter
 from AutoEncoderTrainer.AutoEncoderTrainer import AutoEncoderTrainer
 from AutoEncoderTrainer.ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, \
-    ModelHyperParametersRealImagesGray
+    ModelHyperParametersRealImagesGray, ModelHyperParametersSimpleAnimationColor
 
 # hyper_parameters = ModelHyperParameters()
 
@@ -67,6 +69,15 @@ def run_deep_fully_connected_test():
     run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_deep_")
 
 
+# if __name__ == "__main__":
+#     auto_encoder_trainer = AutoEncoderTrainer()
+#     auto_encoder_trainer.run_all_steps(auto_encoder, hyper_parameters)
+
 if __name__ == "__main__":
+    params = ModelHyperParametersSimpleAnimationColor()
+    auto_encoder = ConvAutoEncoder(params)
     auto_encoder_trainer = AutoEncoderTrainer()
-    auto_encoder_trainer.run_all_steps(auto_encoder, hyper_parameters)
+    trained_model = auto_encoder_trainer.load_model_with_weights(auto_encoder)
+    auto_encoder_converter = AutoEncoderConverter(trained_model, 2, 3)
+    auto_encoder_converter.convert_autoencoder_into_object_classifier()
+    s = 'slut'

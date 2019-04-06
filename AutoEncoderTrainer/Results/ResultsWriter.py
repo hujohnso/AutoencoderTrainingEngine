@@ -17,7 +17,7 @@ class ResultsWriter:
 
     def __init__(self, model_hyper_parameters):
         self.parameters = model_hyper_parameters
-        self.root_file_path = "../Results/" + self.parameters.results_folder
+        self.root_file_path = self.parameters.base_file_path + "Results/" + self.parameters.results_folder
         self.load_old_model_if_present()
         self.delete_folder_and_create_new_empty_folder(self.root_file_path)
         self.delete_folder_and_create_new_empty_folder(self.root_file_path + "/images")

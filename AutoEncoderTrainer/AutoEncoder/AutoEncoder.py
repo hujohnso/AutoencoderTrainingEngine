@@ -63,7 +63,7 @@ class AutoEncoder:
         num_in_matrix = 0
         image_number = 0
         for filename in cv2.os.listdir(folder_with_images):
-            if not filename.endswith(".jpg"):
+            if not filename.endswith(".jpg") and not filename.endswith(".png"):
                 continue
             if num_in_matrix == number_of_frames:
                 break
@@ -228,12 +228,12 @@ class AutoEncoder:
 
     def rescaler(self, image_to_alter):
         image = None
-        if self.hyper_params.type_of_transformation == ImageManipulationType.PIXEL:
+        if self.hyper_params.type_of_transformation == ImageManipulationType.ImageManipulationType.PIXEL:
             image = cv2.resize(image_to_alter,
                                (self.hyper_params.pixel_resize_value, self.hyper_params.pixel_resize_value))
-        elif self.hyper_params.type_of_transformation == ImageManipulationType.RATIO:
+        elif self.hyper_params.type_of_transformation == ImageManipulationType.ImageManipulationType.RATIO:
             image = rescale(image_to_alter, self.hyper_params.image_rescale_value, anti_aliasing=False)
-        elif self.hyper_params.type_of_transformation == ImageManipulationType.NONE:
+        elif self.hyper_params.type_of_transformation == ImageManipulationType.ImageManipulationType.NONE:
             image = image_to_alter
         image = image / 255
         return image
@@ -256,3 +256,15 @@ class AutoEncoder:
                                  metrics=['binary_crossentropy'])
         else:
             auto_encoder.compile(optimizer='Adam', loss='mean_squared_error', metrics=['binary_crossentropy'])
+
+    def load_autoencoder(self):
+        # global image_width_after_rescale
+        # global image_height_after_rescale
+        # global image_depth_after_rescale
+        # self.image_width_after_rescale = self.hyper_params.pixel_resize_value
+        # self.image_height_after_rescale = self.hyper_params.pixel_resize_value
+        # if self.hyper_params.as_gray:
+        #     self.image_depth_after_rescale = 1
+        # else:
+        #     self.image_depth_after_rescale = 3
+        return self.build_model(None)

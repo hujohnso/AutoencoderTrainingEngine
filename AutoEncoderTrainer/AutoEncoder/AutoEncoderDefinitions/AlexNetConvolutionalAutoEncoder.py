@@ -1,6 +1,8 @@
-from AutoEncoderTrainer.AutoEncoder import AutoEncoder
+
 from keras.layers import Input, Dense, Conv2D, MaxPooling2D, Flatten, Dropout
 from keras.models import Model
+
+from AutoEncoderTrainer.AutoEncoder.AutoEncoder import AutoEncoder
 
 
 class AlexNetConvolutionalAutoEncoder(AutoEncoder):

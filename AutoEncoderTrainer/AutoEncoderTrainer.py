@@ -4,6 +4,9 @@ from AutoEncoderTrainer.Results import ResultsWriter
 
 
 class AutoEncoderTrainer:
+    def __init__(self):
+        pass
+
     def timer(self, executable, function_executed):
         start_time = time.time()
         return_value = executable()
@@ -27,7 +30,5 @@ class AutoEncoderTrainer:
                                              results_validation)
         return auto_encoder_model
 
-    def get_pre_trained_model(self, auto_encoder_local):
-        input_matrix = self.timer(lambda: auto_encoder_local.init_training_matrix(), "training set creation")
-        auto_encoder_model = self.timer(lambda: auto_encoder_local.build_model(input_matrix), "model creation")
-        return auto_encoder_model
+    def load_model_with_weights(self, auto_encoder_local):
+        return auto_encoder_local.load_autoencoder()

@@ -39,7 +39,13 @@
     Train a good object classifier on the animation data. NOT DONE but different
 4/12:
     -Go see DJ
+    -element wise mult
+    -place holder slides
+    -Outline report
+    -Documentation on how everything is done
     -Link the object classifier with the Segmentation model
+    -Pull down a classifier and rename the folder
+
 4/19:
     Link the object classifier with the Segmentation model
 4/26:
