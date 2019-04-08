@@ -38,6 +38,10 @@ class AutoEncoder:
     def create_autoencoder(self, input_image_vector):
         return
 
+    @abc.abstractmethod
+    def get_num_decoding_layers_to_rip_out(self):
+        return
+
     def save_original_dims(self, input_image):
         global image_width_after_rescale
         global image_height_after_rescale

@@ -3,12 +3,14 @@ import numpy
 import cv2
 
 from Segmenter.UnetLoader import UnetLoader
+from Segmenter.model.StateObjectClasses import StateObjectClasses
 
 
 class ImageStreamCreator:
     folder_with_original_images = None
     u_net_required_dim = 224
-    root_path_for_segmented_images = "../Segmenter/Images/SegmentedImages"
+    root_path_for_segmented_images = "./Segmenter/Images/SegmentedImages"
+    root_path_for_state_object_classes = "./Segmenter/Images/OutputImages"
     video_name = None
 
     def __init__(self, folder_with_images, video_name):
@@ -79,3 +81,27 @@ class ImageStreamCreator:
         for image in segmented_matrix:
             cv2.imwrite(folder_path + "/" + video_name + "/%d.jpg" % num_saved, image)
             num_saved += 1
+
+    def get_state_object_classes_for_training(self):
+        list_of_objects = cv2.os.listdir(self.root_path_for_state_object_classes)
+        list_of_objects.sort()
+        class_num_and_num_pics = []
+        current_class_number = 0
+        images = None
+        for state_objects in list_of_objects:
+            one_object_matrix = self.load_images_from_a_file(
+                self.root_path_for_state_object_classes + "/" + state_objects, True)
+            images.apppend(one_object_matrix)
+            class_num_and_num_pics.append((current_class_number, one_object_matrix.shape[0]))
+            current_class_number += 1
+        return StateObjectClasses(images, self.build_classification_matrix(class_num_and_num_pics, images, current_class_number))
+
+
+    def build_classification_matrix(self, class_num_and_num_pics, image_matrix, number_of_classes):
+        classification_matrix = numpy.zeros((image_matrix.shape[0], number_of_classes))
+        i = 0
+        for object_index in class_num_and_num_pics:
+            for row in range(object_index[1]):
+                classification_matrix[0][object_index] = 1
+                i += 1
+        return classification_matrix

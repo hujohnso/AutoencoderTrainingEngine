@@ -4,6 +4,7 @@ import numpy
 import cv2
 import os
 
+
 class StatePrinter:
     output_folder_template = "../Segmenter/Images/OutputImages/object%d/"
 
@@ -26,7 +27,6 @@ class StatePrinter:
                 else:
                     image_to_show[i, j] = 1
         return numpy.dstack([image_to_show] * 3)
-
 
     def sort_state_objects_into_folders(self, segmented_image, original_image, state_objects_to_print):
         for state_object in state_objects_to_print:

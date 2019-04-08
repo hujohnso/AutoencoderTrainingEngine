@@ -1,3 +1,4 @@
+from abc import ABC
 
 from keras.layers import Input, Dense, Flatten
 from keras.models import Model
@@ -5,7 +6,7 @@ from keras.models import Model
 from AutoEncoderTrainer.AutoEncoder.AutoEncoder import AutoEncoder
 
 
-class FullyConnectedAutoEncoderHyperbolicTangent(AutoEncoder):
+class FullyConnectedAutoEncoderHyperbolicTangent(AutoEncoder, ABC):
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
 

@@ -32,3 +32,4 @@ class AutoEncoderTrainer:
 
     def load_model_with_weights(self, auto_encoder_local):
         return auto_encoder_local.load_autoencoder()
+

@@ -3,10 +3,13 @@ from keras.callbacks import TensorBoard
 from keras.layers import Conv2D, Flatten, Dense
 from keras.optimizers import Adam
 
-from AutoEncoderTrainer.AutoEncoder import AutoEncoder
+from AutoEncoderTrainer.AutoEncoder.AutoEncoder import AutoEncoder
 
 
 class ConvFullyConnectedUpConv(AutoEncoder):
+    def get_num_decoding_layers_to_rip_out(self):
+        pass
+
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
 

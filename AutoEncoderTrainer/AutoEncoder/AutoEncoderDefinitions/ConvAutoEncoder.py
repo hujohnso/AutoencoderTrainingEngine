@@ -8,6 +8,9 @@ from AutoEncoderTrainer.AutoEncoder.AutoEncoder import AutoEncoder
 
 
 class ConvAutoEncoder(AutoEncoder):
+    def get_num_decoding_layers_to_rip_out(self):
+        return 2
+
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
 

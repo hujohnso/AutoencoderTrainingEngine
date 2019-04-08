@@ -10,6 +10,7 @@ class ModelHyperParameters(object):
         self.number_of_epochs_for_training = 20
         self.batch_size = 30
         self.load_model = False
+        self.load_model_for_state_object_training = False
         self.adam_specify_learning_rate = False
         self.adam_alpha = 1e-3
         self.adam_decay_rate = .001
@@ -23,6 +24,10 @@ class ModelHyperParameters(object):
         self.model_name = "my_model.h5"
         self.working_model_path = self.base_file_path + "saved_models/"
         self.tensor_board_directory = self.base_file_path + "tensor_board_models"
+        #Fine tuning training
+        self.number_of_epochs_for_fine_tuning = 20
+        self.batch_size_for_fine_tuning = 10
+
 
     # These parameters describe the necessary file paths to the sets of images to train on
     base_file_path = "./"
@@ -139,6 +144,7 @@ class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
         self.number_of_images_for_validation = 10
         self.batch_size = 32
         self.load_model = True
+        self.load_model_for_state_object_training = False
         self.as_gray = False
         self.adam_specify_learning_rate = True
         self.adam_alpha = 0.00001
@@ -149,4 +155,6 @@ class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
         self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
         self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/easyPolygon"
         self.file_path_for_training_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/easyPolygon"
-        self.tensor_board_directory = ModelHyperParameters.base_file_path + "Results/" + self.results_folder + "/"
+        self.tensor_board_directory = ModelHyperParameters.working_model_path + "Results/" + self.results_folder + "/"
+        self.number_of_epochs_for_fine_tuning = 20
+        self.batch_size_for_fine_tuning = 10

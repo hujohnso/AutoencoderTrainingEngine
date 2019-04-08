@@ -13,6 +13,8 @@ from AutoEncoderTrainer.ModelRunner.ModelHyperParameters import ModelHyperParame
 
 # hyper_parameters = ModelHyperParametersRealImagesGray()
 # hyper_parameters = ModelHyperParametersMNIST()
+from StateObjectClassifier.StateObjectClassifier import StateObjectClassifier
+
 hyper_parameters = ModelHyperParametersRealImagesColor()
 # hyper_parameters = ModelHyperParametersAnimationGrey()
 # auto_encoder = ConvFullyConnectedUpConv(hyper_parameters)
@@ -74,10 +76,7 @@ def run_deep_fully_connected_test():
 #     auto_encoder_trainer.run_all_steps(auto_encoder, hyper_parameters)
 
 if __name__ == "__main__":
-    params = ModelHyperParametersSimpleAnimationColor()
-    auto_encoder = ConvAutoEncoder(params)
-    auto_encoder_trainer = AutoEncoderTrainer()
-    trained_model = auto_encoder_trainer.load_model_with_weights(auto_encoder)
-    auto_encoder_converter = AutoEncoderConverter(trained_model, 2, 3)
-    auto_encoder_converter.convert_autoencoder_into_object_classifier()
-    s = 'slut'
+    model_hyper_parameters = ModelHyperParametersSimpleAnimationColor()
+    auto_encoder = ConvAutoEncoder(model_hyper_parameters)
+    state_object_classifier = StateObjectClassifier(model_hyper_parameters, auto_encoder)
+    state_object_classifier.train_new_model_on_state_objects()

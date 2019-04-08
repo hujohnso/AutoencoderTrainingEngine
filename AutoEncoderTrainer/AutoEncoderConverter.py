@@ -34,7 +34,6 @@ class AutoEncoderConverter:
         self.trained_auto_encoder = Model(inputs=self.trained_auto_encoder.inputs,
                                           outputs=self.trained_auto_encoder.outputs)
 
-
     def add_classification_layers_to_model(self, num_classes):
         x = Dense(num_classes, activation='softmax', kernel_initializer='RandomUniform', name='classification_layer')(self.trained_auto_encoder.output)
         model = Model(inputs=self.trained_auto_encoder.inputs, outputs=x)

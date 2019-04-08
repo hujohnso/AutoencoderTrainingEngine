@@ -1,6 +1,6 @@
 import numpy
 
-from Segmenter.CodeFromTrainedUnet.StatePrinter import StatePrinter
+from Segmenter.StatePrinter import StatePrinter
 from Segmenter.SingleImageObjectFinder import SingleImageObjectFinder
 from Segmenter.Utils import StateObjectHelpers
 from Segmenter.model.State import State

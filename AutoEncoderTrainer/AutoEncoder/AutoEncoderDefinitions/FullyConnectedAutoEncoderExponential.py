@@ -6,6 +6,9 @@ from AutoEncoderTrainer.AutoEncoder.AutoEncoder import AutoEncoder
 
 
 class FullyConnectedAutoEncoderExponential(AutoEncoder):
+    def get_num_decoding_layers_to_rip_out(self):
+        pass
+
     def __init__(self, model_hyper_parameters):
         AutoEncoder.__init__(self, model_hyper_parameters)
 
