@@ -54,14 +54,13 @@
     Finish write a paper explaining everything and turn it in.
 
 Wish list:
-    set up data agumentation
-    Momentum
-    Get working on youtube images
-    At least try and do W-net
-    Attempt to get this working with real images.
-    Set up smart auto-encoder training engine.
-    Make the segment labeler able to handle objects that appear as well
-    Link objects together is they move with the same momentum (Might be a real image problem)
+    set up data agumentation (low)
+    Momentum (high)
+    Get working on youtube images (medium)
+    At least try and do W-net (low)
+    Set up smart auto-encoder training engine. (Medium)
+    Make the segment labeler able to handle objects that appear as well (high)
+
 
 Questions:
     Is my linking plan sufficient?

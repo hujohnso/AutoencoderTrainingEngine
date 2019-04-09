@@ -21,7 +21,7 @@ class ImageStreamCreator:
     def get_segmented_image_stream(self):
         if self.check_to_see_if_segmented_image_folder_exists(
                 self.root_path_for_segmented_images + "/" + self.video_name):
-            return self.load_images_from_a_file(self.root_path_for_segmented_images + "/" + self.video_name, False)
+            return numpy.load(self.root_path_for_segmented_images + "/" + self.video_name + "/segmented.npy")
         else:
             return self.load_original_images_and_segment()
 
@@ -76,11 +76,8 @@ class ImageStreamCreator:
 
     # Not necessary but it makes iterations faster
     def save_segmented_images(self, segmented_matrix, folder_path, video_name):
-        num_saved = 0
         cv2.os.mkdir(folder_path + "/" + video_name)
-        for image in segmented_matrix:
-            cv2.imwrite(folder_path + "/" + video_name + "/%d.jpg" % num_saved, image)
-            num_saved += 1
+        numpy.save(folder_path + "/" + video_name + "/segmented", segmented_matrix)
 
     def get_state_object_classes_for_training(self):
         list_of_objects = cv2.os.listdir(self.root_path_for_state_object_classes)

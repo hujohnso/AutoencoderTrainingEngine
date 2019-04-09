@@ -70,11 +70,6 @@ def run_deep_fully_connected_test():
     auto_encoder_local = FullyConnectedAutoEncoderDeep.FullyConnectedAutoEncoderDeep(hyper_parameters_local)
     run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_deep_")
 
-
-# if __name__ == "__main__":
-#     auto_encoder_trainer = AutoEncoderTrainer()
-#     auto_encoder_trainer.run_all_steps(auto_encoder, hyper_parameters)
-
 if __name__ == "__main__":
     model_hyper_parameters = ModelHyperParametersSimpleAnimationColor()
     auto_encoder = ConvAutoEncoder(model_hyper_parameters)

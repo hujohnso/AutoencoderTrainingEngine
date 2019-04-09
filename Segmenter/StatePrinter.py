@@ -6,10 +6,23 @@ import os
 
 
 class StatePrinter:
-    output_folder_template = "./Segmenter/Images/OutputImages/object%d/"
+    output_folder = "./Segmenter/Images/OutputImages"
+    output_folder_template = output_folder + "/object%d/"
 
-    # def __init__(self):
-    #
+
+
+    def __init__(self):
+        self.del_contents_of_output_folder()
+
+    def del_contents_of_output_folder(self):
+        for the_file in os.listdir(self.output_folder):
+            file_path = os.path.join(self.output_folder, the_file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                # elif os.path.isdir(file_path): shutil.rmtree(file_path)
+            except Exception as e:
+                print(e)
 
     def print_image_by_state_object_id(self, state_object, image, original_image):
         image_filter = self.alter_image_for_element_wise_mult(state_object, image)
