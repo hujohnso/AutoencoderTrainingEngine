@@ -6,7 +6,10 @@ import os
 
 
 class StatePrinter:
-    output_folder_template = "../Segmenter/Images/OutputImages/object%d/"
+    output_folder_template = "./Segmenter/Images/OutputImages/object%d/"
+
+    # def __init__(self):
+    #
 
     def print_image_by_state_object_id(self, state_object, image, original_image):
         image_filter = self.alter_image_for_element_wise_mult(state_object, image)

@@ -14,10 +14,13 @@ class StateObjectClassifier:
 
     def train_new_model_on_state_objects(self):
         auto_encoder_model = self.get_trained_auto_encoder_model()
+        print("You have finished getting the trained auto encoder \n")
         state_object_classes = self.get_state_object_information(self.model_hyper_parameters)
+        print("You have finished getting the state object information")
         classification_model = self.get_network_for_fine_tuned_classification(auto_encoder_model,
                                                                               self.auto_encoder_object,
                                                                               state_object_classes.number_of_objects_identified)
+        print("You just finished training your classification model!")
         return self.train_classification_model(classification_model, state_object_classes)
 
     def get_trained_auto_encoder_model(self):
@@ -42,7 +45,7 @@ class StateObjectClassifier:
         auto_encoder_converter = AutoEncoderConverter(auto_encoder_model,
                                                       auto_encoder_object.get_num_decoding_layers_to_rip_out(),
                                                       number_of_objects_to_expect)
-        auto_encoder_converter.convert_autoencoder_into_object_classifier()
+        return auto_encoder_converter.convert_autoencoder_into_object_classifier()
 
     def train_classification_model(self, classification_model, state_object_classes):
         classification_model.fit(state_object_classes.array_of_state_object_images,
@@ -58,4 +61,4 @@ class StateObjectClassifier:
         return classification_model
 
     def save_model(self, model_to_save):
-        model_to_save.save(self.model_hyper_parameters.working_model_path + self.model_hyper_parameters.model_name + "_fine_tuned")
+        model_to_save.save(self.model_hyper_parameters.working_model_path + self.model_hyper_parameters.results_folder + "_fine_tuned.h5")

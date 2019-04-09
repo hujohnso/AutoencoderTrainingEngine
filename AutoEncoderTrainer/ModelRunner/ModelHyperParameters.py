@@ -139,17 +139,17 @@ class ModelHyperParametersMNIST(ModelHyperParameters):
 class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 20
-        self.number_of_images = 20
+        self.number_of_epochs_for_training = 10
+        self.number_of_images = 10
         self.number_of_images_for_validation = 10
-        self.batch_size = 32
-        self.load_model = True
+        self.batch_size = 24
+        self.load_model = False
         self.load_model_for_state_object_training = False
         self.as_gray = False
         self.adam_specify_learning_rate = True
         self.adam_alpha = 0.00001
         self.adam_decay_rate = None
-        self.pixel_resize_value = 256
+        self.pixel_resize_value = 224
         self.results_folder = "simplePolygon"
         self.model_name = self.results_folder + ".h5"
         self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"

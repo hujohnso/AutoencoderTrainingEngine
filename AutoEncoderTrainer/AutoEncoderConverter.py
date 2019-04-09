@@ -21,6 +21,7 @@ class AutoEncoderConverter:
         print(self.trained_auto_encoder.summary())
         self.add_classification_layers_to_model(self.expected_number_of_classes)
         print(self.trained_auto_encoder.summary())
+        return self.trained_auto_encoder
 
     def freeze_pretrained_layers_weights(self):
         for layer in self.trained_auto_encoder.layers:
