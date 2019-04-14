@@ -21,7 +21,7 @@ class AutoEncoderTrainer:
                                        "validation/dev set creation")
         auto_encoder_model = self.timer(lambda: auto_encoder_local.build_model(input_matrix), "model creation")
         auto_encoder_model = self.timer(
-            lambda: auto_encoder_local.train(input_matrix, auto_encoder_model, validation_matrix), "the model to train")
+            lambda: auto_encoder_local.train(input_matrix, auto_encoder_model, validation_matrix, hyper_parameters_local), "the model to train")
         original, results = auto_encoder_local.get_results_matrix_and_transform_input_matrix(auto_encoder_model,
                                                                                              input_matrix)
         original_validation, results_validation = auto_encoder_local.get_results_matrix_and_transform_input_matrix(

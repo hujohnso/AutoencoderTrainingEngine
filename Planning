@@ -39,12 +39,12 @@
     Train a good object classifier on the animation data. NOT DONE but different
 4/12:
     -Go see DJ
-    -element wise mult
+    -element wise mult DONE
     -place holder slides
     -Outline report
     -Documentation on how everything is done
-    -Link the object classifier with the Segmentation model
-    -Pull down a classifier and rename the folder
+    -Link the object classifier with the Segmentation model DONE
+    -Pull down a classifier and rename the folders
 
 4/19:
     Link the object classifier with the Segmentation model
@@ -60,7 +60,6 @@ Wish list:
     At least try and do W-net (low)
     Set up smart auto-encoder training engine. (Medium)
     Make the segment labeler able to handle objects that appear as well (high)
-
 
 Questions:
     Is my linking plan sufficient?

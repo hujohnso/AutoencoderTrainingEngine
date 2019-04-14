@@ -10,6 +10,7 @@ from keras.callbacks import TensorBoard
 import random as rand
 
 from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions import ImageManipulationType
+from SmartTrainer.SmartTrainer import SmartTrainer
 
 
 class AutoEncoder:
@@ -115,20 +116,27 @@ class AutoEncoder:
         image = self.inverse_rescaler(image_matrix)
         return image
 
-    def train(self, input_matrix, model, validation_matrix):
-        model.fit(input_matrix, input_matrix.reshape(self.hyper_params.number_of_images, -1),
-                  epochs=self.hyper_params.number_of_epochs_for_training,
-                  batch_size=self.hyper_params.batch_size,
+    def single_time_train(self, input_matrix, output_matrix, model, validation_matrix_input, validation_matrix_output, hyper_params):
+        model.fit(input_matrix, input_matrix.reshape(hyper_params.number_of_images, -1),
+                  epochs=hyper_params.number_of_epochs_for_training,
+                  batch_size=hyper_params.batch_size,
                   shuffle=True,
                   validation_data=(
-                      validation_matrix,
-                      validation_matrix.reshape(self.hyper_params.number_of_images_for_validation, -1)),
-                  callbacks=[TensorBoard(log_dir=self.hyper_params.tensor_board_directory,
+                      validation_matrix_input,
+                      validation_matrix_input.reshape(hyper_params.number_of_images_for_validation, -1)),
+                  callbacks=[TensorBoard(log_dir=hyper_params.tensor_board_directory,
                                          histogram_freq=0,
                                          write_graph=True,
                                          write_images=False)])
         self.save_model(model)
         return model
+
+    def train(self, input_matrix, model, validation_matrix, hyper_params):
+        if hyper_params.use_smart_train:
+            smart_trainer = SmartTrainer()
+            return smart_trainer.smart_train(input_matrix, None, model, validation_matrix, None, hyper_params, lambda a, b, c, d, e, f: self.single_time_train(a, b, c, d, e, f))
+        else:
+            return self.single_time_train(input_matrix, model, validation_matrix, hyper_params)
 
     def save_model(self, model_to_save):
         model_to_save.save(self.hyper_params.working_model_path + self.hyper_params.model_name)
