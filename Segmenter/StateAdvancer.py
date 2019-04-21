@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 import numpy
 
 from Segmenter.StatePrinter import StatePrinter
@@ -33,11 +35,14 @@ class StateAdvancer:
         self.state_printer.sort_state_objects_into_folders(initial_segmented_image, initial_original_image, self.state.state_object_set)
 
     def update_state(self, segmented_image_for_update, original_image):
+        if self.state.current_frame_number == 1:
+            s = "bla"
         if self.state.current_frame_number == 0:
             self.initialize_state(segmented_image_for_update, original_image)
         else:
             self.current_image = segmented_image_for_update
-            set_of_numbered_object_labels = self.single_image_object_finder.process_single_image(self.current_image)
+            set_of_numbered_object_labels = set()
+            set_of_numbered_object_labels.update(self.single_image_object_finder.process_single_image(self.current_image))
             self.state.state_object_set = self.map_single_image_output_to_state_objects(set_of_numbered_object_labels,
                                                                                         self.current_image,
                                                                                         self.state.state_object_set)
@@ -65,13 +70,24 @@ class StateAdvancer:
         for new_state_object_index in range(len(set_of_new_state_objects)):
             for current_state_object_index in range(len(set_of_current_state_objects)):
                 probability_matrix[new_state_object_index, current_state_object_index] = \
-                    StateObjectHelpers.StateObjectHelpers.get_centroid_distance(
-                        set_of_new_state_objects[new_state_object_index].current_centroid,
-                        set_of_current_state_objects[current_state_object_index].current_centroid)
+                    self.calculate_likelihood_score_between_state_objects(
+                        set_of_new_state_objects[new_state_object_index],
+                        set_of_current_state_objects[current_state_object_index])
         return probability_matrix
 
-        # There could be a ton of ways to do this however for now I am just doing the simplest thing which is to choose the greedy way for now
+    def calculate_likelihood_score_between_state_objects(self, state_object_new, state_object_current):
+        total_score = 0
+        total_score += StateObjectHelpers.StateObjectHelpers.get_centroid_distance(
+            state_object_new.current_centroid,
+            state_object_current.current_centroid)
+        # total_score += StateObjectHelpers.StateObjectHelpers.get_difference_in_mass(
+        #     state_object_current,
+        #     state_object_new
+        # )
+        #total_score += StateObjectHelpers.StateObjectHelpers.get_difference_in_momentum(state_object_current, state_object_new)
+        return total_score
 
+    # There could be a ton of ways to do this however for now I am just doing the simplest thing which is to choose the greedy way for now
     def traverse_the_probability_matrix(self, probability_matrix):
         chosen_indices = []
         for new_state_object_index in range(probability_matrix.shape[0]):
@@ -92,6 +108,9 @@ class StateAdvancer:
         for i in range(len(chosen_indices)):
             list_of_current_state_objects[chosen_indices[i]].current_mapped_number = list_of_new_state_objects[
                 i].object_id
+            list_of_current_state_objects[chosen_indices[i]].last_centroid = list_of_new_state_objects[i].current_centroid
+            list_of_current_state_objects[chosen_indices[i]].current_centroid = list_of_new_state_objects[i].current_centroid
+            list_of_current_state_objects[chosen_indices[i]].current_pixels = list_of_new_state_objects[i].current_pixels
         return list_of_current_state_objects
 
     def create_new_set_of_state_objects_from_set_of_ids(self, set_of_numbered_object_labels, segmented_image):

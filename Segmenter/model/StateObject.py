@@ -11,6 +11,7 @@ class StateObject:
         self.current_momentum = None
         self.folder_path = None
         self.current_centroid = None
+        self.last_centroid = None
 
     def set_current_pixels(self, current_pixels):
         self.current_pixels = current_pixels

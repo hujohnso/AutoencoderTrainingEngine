@@ -132,11 +132,15 @@ class AutoEncoder:
         return model
 
     def train(self, input_matrix, model, validation_matrix, hyper_params):
-        if hyper_params.use_smart_train:
-            smart_trainer = SmartTrainer()
-            return smart_trainer.smart_train(input_matrix, None, model, validation_matrix, None, hyper_params, lambda a, b, c, d, e, f: self.single_time_train(a, b, c, d, e, f))
-        else:
-            return self.single_time_train(input_matrix, model, validation_matrix, hyper_params)
+        if hyper_params.train_autoencoder:
+            if hyper_params.use_smart_train:
+                smart_trainer = SmartTrainer()
+                return smart_trainer.smart_train(input_matrix, None, model, validation_matrix, None, hyper_params, lambda a, b, c, d, e, f: self.single_time_train(a, b, c, d, e, f))
+            else:
+                return self.single_time_train(input_matrix, None, model, validation_matrix, None, hyper_params)
+        elif not hyper_params.train_autoencoder:
+            return model
+
 
     def save_model(self, model_to_save):
         model_to_save.save(self.hyper_params.working_model_path + self.hyper_params.model_name)

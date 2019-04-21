@@ -1,4 +1,4 @@
-class Centroid:
+class PointTuple:
     x = None
     y = None
 

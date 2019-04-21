@@ -29,6 +29,7 @@ class ModelHyperParameters(object):
         self.batch_size_for_fine_tuning = 10
         self.training_loss_threshold = .01
         self.use_smart_train = True
+        self.train_autoencoder = True
 
 
     # These parameters describe the necessary file paths to the sets of images to train on
@@ -145,7 +146,8 @@ class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
         self.number_of_images = 120
         self.number_of_images_for_validation = 10
         self.batch_size = 64
-        self.load_model = False
+        self.load_model = True
+        self.train_autoencoder = False
         self.load_model_for_state_object_training = False
         self.as_gray = False
         self.adam_specify_learning_rate = True
@@ -160,4 +162,4 @@ class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
         self.tensor_board_directory = ModelHyperParameters.working_model_path + "Results/" + self.results_folder + "/"
         self.number_of_epochs_for_fine_tuning = 20
         self.batch_size_for_fine_tuning = 10
-        self.training_loss_threshold = .005
+        self.training_loss_threshold = .01

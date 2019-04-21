@@ -50,13 +50,14 @@ class ResultsWriter:
             i += 1
 
     def write_all_information(self, model, training_matrix_orig, training_matrix, validation_matrix_orig, validation_matrix):
-        self.model = model
-        self.write_hyper_parameters_to_file()
-        self.write_model_history_to_file()
-        self.write_image_matrix_to_files(training_matrix_orig, 'training_matrix_original')
-        self.write_image_matrix_to_files(training_matrix, 'training_matrix')
-        self.write_image_matrix_to_files(validation_matrix_orig, 'validation_matrix_original')
-        self.write_image_matrix_to_files(validation_matrix, 'validation_matrix')
+        if self.parameters.train_autoencoder:
+            self.model = model
+            self.write_hyper_parameters_to_file()
+            self.write_model_history_to_file()
+            self.write_image_matrix_to_files(training_matrix_orig, 'training_matrix_original')
+            self.write_image_matrix_to_files(training_matrix, 'training_matrix')
+            self.write_image_matrix_to_files(validation_matrix_orig, 'validation_matrix_original')
+            self.write_image_matrix_to_files(validation_matrix, 'validation_matrix')
 
     def delete_folder_and_create_new_empty_folder(self, file_path):
         if os.path.isdir(file_path):
