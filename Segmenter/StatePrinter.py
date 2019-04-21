@@ -9,8 +9,6 @@ class StatePrinter:
     output_folder = "./Segmenter/Images/OutputImages"
     output_folder_template = output_folder + "/object%d/"
 
-
-
     def __init__(self):
         self.del_contents_of_output_folder()
 
@@ -53,3 +51,17 @@ class StatePrinter:
     def create_or_delete_folder_if_necessary(self, file_path):
         if not os.path.isdir(file_path):
             os.makedirs(file_path)
+
+    def combine_state_objects_into_video(self):
+        for state_object_folder in os.listdir(self.output_folder):
+            list_of_images = os.listdir(self.output_folder + "/" + state_object_folder)
+            list_of_images.sort(key=lambda fname: int(fname.split('.')[0]))
+            image_for_video_pixel_size = cv2.imread(self.output_folder + "/" + state_object_folder + "/" + list_of_images[1], 1)
+            object_video = cv2.VideoWriter(self.output_folder + "/" + state_object_folder + "/" + "obj_video.avi",
+                                           0,
+                                           30,
+                                           (image_for_video_pixel_size.shape[0], image_for_video_pixel_size.shape[1]))
+            for frame in list_of_images:
+                object_video.write(cv2.imread(self.output_folder + "/" + state_object_folder + "/" + "/" + frame, 1))
+            cv2.destroyAllWindows()
+            object_video.release()

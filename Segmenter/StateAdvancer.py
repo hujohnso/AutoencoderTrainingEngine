@@ -24,6 +24,8 @@ class StateAdvancer:
             raise Exception("You have a different number of original images and segmented images... Something is up with the image stream creator")
         for i in range(len(self.segmented_images)):
             self.update_state(self.segmented_images[i], self.original_images[i])
+            if i == len(self.segmented_images) - 1:
+                self.state_printer.combine_state_objects_into_video()
 
     def initialize_state(self, initial_segmented_image, initial_original_image):
         self.current_image = initial_segmented_image
@@ -35,8 +37,6 @@ class StateAdvancer:
         self.state_printer.sort_state_objects_into_folders(initial_segmented_image, initial_original_image, self.state.state_object_set)
 
     def update_state(self, segmented_image_for_update, original_image):
-        if self.state.current_frame_number == 1:
-            s = "bla"
         if self.state.current_frame_number == 0:
             self.initialize_state(segmented_image_for_update, original_image)
         else:
