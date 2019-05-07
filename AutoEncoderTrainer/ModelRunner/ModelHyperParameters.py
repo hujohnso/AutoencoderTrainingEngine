@@ -126,7 +126,7 @@ class ModelHyperParametersMNIST(ModelHyperParameters):
         self.number_of_images = 5016
         self.number_of_images_for_validation = 256
         self.model_name = "mnist_2048.h5"
-        self.load_model = False
+        self.load_model = True
         self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mnist_jpgfiles/train"
         self.file_path_for_training_set = ModelHyperParameters.base_file_path + "PreMadeDatasets/MNIST/mnist_jpgfiles/mnist_jpgfiles/test"
         self.type_of_transformation = ImageManipulationType.ImageManipulationType.PIXEL
@@ -142,24 +142,49 @@ class ModelHyperParametersMNIST(ModelHyperParameters):
 class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 10
+        self.number_of_epochs_for_training = 100
         self.number_of_images = 120
         self.number_of_images_for_validation = 10
-        self.batch_size = 64
+        self.batch_size = 4
         self.load_model = True
-        self.train_autoencoder = False
+        self.train_autoencoder = True
         self.load_model_for_state_object_training = False
         self.as_gray = False
         self.adam_specify_learning_rate = True
-        self.adam_alpha = 0.00001
+        self.adam_alpha = 0.000001
         self.adam_decay_rate = None
         self.pixel_resize_value = 224
-        self.results_folder = "simplePolygon"
+        self.results_folder = "simplePolygonMNISTAltered"
         self.model_name = self.results_folder + ".h5"
         self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
         self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/easyPolygon"
         self.file_path_for_training_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/easyPolygon"
         self.tensor_board_directory = ModelHyperParameters.working_model_path + "Results/" + self.results_folder + "/"
-        self.number_of_epochs_for_fine_tuning = 20
-        self.batch_size_for_fine_tuning = 10
-        self.training_loss_threshold = .01
+        self.number_of_epochs_for_fine_tuning = 100
+        self.batch_size_for_fine_tuning = 64
+        self.training_loss_threshold = .001
+
+class ModelHyperParametersHardAnimationColor(ModelHyperParameters):
+    def __init__(self):
+        super().__init__()
+        self.number_of_epochs_for_training = 100
+        self.number_of_images = 120
+        self.number_of_images_for_validation = 10
+        self.batch_size = 4
+        self.load_model = False
+        self.train_autoencoder = True
+        self.load_model_for_state_object_training = False
+        self.as_gray = False
+        self.adam_specify_learning_rate = True
+        self.adam_alpha = 0.0000001
+        self.adam_decay_rate = None
+        self.pixel_resize_value = 224
+        self.results_folder = "hardPolygonAlexnetAltered"
+        self.model_name = self.results_folder + ".h5"
+        self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/lotsOfMovingShapes"
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/lotsOfMovingShapes"
+        self.tensor_board_directory = ModelHyperParameters.working_model_path + "Results/" + self.results_folder + "/"
+        self.number_of_epochs_for_fine_tuning = 100
+        self.batch_size_for_fine_tuning = 64
+        self.training_loss_threshold = .001

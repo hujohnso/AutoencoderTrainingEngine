@@ -3,11 +3,15 @@ import time
 from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions import MNISTExampleAutoEncoder, \
     FullyConnectedAutoEncoderExponential, FullyConnectedAutoEncoderHyperbolicTangent, FullyConnectedAutoEncoder, \
     FullyConnectedAutoEncoderDeep
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.AlexNetAltered import AlexNetAltered
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.AlexNetConvolutionalAutoEncoder import \
+    AlexNetConvolutionalAutoEncoder
 from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.ConvAutoEncoder import ConvAutoEncoder
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.MNISTExampleAltered import MNISTExampleAltered
 from AutoEncoderTrainer.AutoEncoderConverter import AutoEncoderConverter
 from AutoEncoderTrainer.AutoEncoderTrainer import AutoEncoderTrainer
 from AutoEncoderTrainer.ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, \
-    ModelHyperParametersRealImagesGray, ModelHyperParametersSimpleAnimationColor
+    ModelHyperParametersRealImagesGray, ModelHyperParametersSimpleAnimationColor, ModelHyperParametersHardAnimationColor
 
 # hyper_parameters = ModelHyperParameters()
 
@@ -71,7 +75,7 @@ def run_deep_fully_connected_test():
     run_number_of_images_experiments(hyper_parameters_local, auto_encoder_local, "fully_connected_deep_")
 
 if __name__ == "__main__":
-    model_hyper_parameters = ModelHyperParametersSimpleAnimationColor()
-    auto_encoder = ConvAutoEncoder(model_hyper_parameters)
+    model_hyper_parameters = ModelHyperParametersHardAnimationColor()
+    auto_encoder = AlexNetAltered(model_hyper_parameters)
     state_object_classifier = StateObjectClassifier(model_hyper_parameters, auto_encoder)
     state_object_classifier.train_new_model_on_state_objects()

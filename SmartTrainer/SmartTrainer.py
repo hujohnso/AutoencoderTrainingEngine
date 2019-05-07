@@ -10,7 +10,7 @@ class SmartTrainer:
     def smart_train(self, input_matrix, output_matrix, model, validation_input_matrix, validation_output_matrix, hyper_params, training_function):
         num_times_through = 0
         trained_model = None
-        while num_times_through < 10 and not self.should_stop_based_on_stats(model, hyper_params):
+        while num_times_through < 50 and not self.should_stop_based_on_stats(model, hyper_params):
             print("We have not met the requirements to stop training.  We are trying another iteration! \n")
             print("The iteration number is: " + str(num_times_through) + "\n")
             trained_model = training_function(input_matrix, output_matrix, model, validation_input_matrix, validation_output_matrix, hyper_params)
@@ -38,7 +38,7 @@ class SmartTrainer:
     @staticmethod
     def should_stop_because_mean_is_not_decreasing(loss_history_mat):
         num_to_split_into = 2
-        tol = .0001
+        tol = .00001
         split_loss_history = numpy.split(numpy.asarray(loss_history_mat), num_to_split_into)
         mean_first_half = numpy.mean(split_loss_history[0])
         mean_second_half = numpy.mean(split_loss_history[1])
@@ -46,7 +46,7 @@ class SmartTrainer:
             print(
                 "The mean loss for the first half versus the second half of this training matrix is greater... Were calling it a day \n")
             return True
-        if 1 - tol < abs(mean_second_half / mean_first_half) < 1 + tol:
+        if -tol < mean_second_half - mean_first_half < tol:
             print("The mean from the first half was not different enough to keep training \n")
             return True
         return False

@@ -26,6 +26,6 @@ class ConvAutoEncoder(AutoEncoder):
                         activity_regularizer=self.get_regularizer())(encoded)
         decoded = Dense(flattened_vector_size, activation='relu', kernel_initializer=self.get_initializer(), activity_regularizer=self.get_regularizer())(decoded)
         auto_encoder = Model(input_image, decoded)
-        auto_encoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['binary_crossentropy'])
+        self.compile_autoencoder(auto_encoder)
         print(auto_encoder.summary())
         return auto_encoder
