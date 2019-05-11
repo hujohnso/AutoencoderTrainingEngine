@@ -167,7 +167,7 @@ class ModelHyperParametersSimpleAnimationColor(ModelHyperParameters):
 class ModelHyperParametersHardAnimationColor(ModelHyperParameters):
     def __init__(self):
         super().__init__()
-        self.number_of_epochs_for_training = 100
+        self.number_of_epochs_for_training = 20
         self.number_of_images = 120
         self.number_of_images_for_validation = 10
         self.batch_size = 4
@@ -176,15 +176,15 @@ class ModelHyperParametersHardAnimationColor(ModelHyperParameters):
         self.load_model_for_state_object_training = False
         self.as_gray = False
         self.adam_specify_learning_rate = True
-        self.adam_alpha = 0.0000001
+        self.adam_alpha = 0.000001
         self.adam_decay_rate = None
         self.pixel_resize_value = 224
-        self.results_folder = "hardPolygonAlexnetAltered"
+        self.results_folder = "easyPolygonConvFCConvOreo"
         self.model_name = self.results_folder + ".h5"
         self.working_model_path = self.base_file_path + "Results/" + self.results_folder + "/"
-        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/lotsOfMovingShapes"
-        self.file_path_for_training_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/lotsOfMovingShapes"
+        self.file_path_for_validation_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/easyPolygon"
+        self.file_path_for_training_set = ModelHyperParameters.base_file_path + "AutoEncoderTrainer/FrameExtractor/Animations/easyPolygon"
         self.tensor_board_directory = ModelHyperParameters.working_model_path + "Results/" + self.results_folder + "/"
-        self.number_of_epochs_for_fine_tuning = 100
+        self.number_of_epochs_for_fine_tuning = 50
         self.batch_size_for_fine_tuning = 64
         self.training_loss_threshold = .001

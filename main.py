@@ -7,7 +7,13 @@ from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.AlexNetAltered import
 from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.AlexNetConvolutionalAutoEncoder import \
     AlexNetConvolutionalAutoEncoder
 from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.ConvAutoEncoder import ConvAutoEncoder
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.FullyConvolutionalAutoEncoderWithFCMiddle import \
+    FullyConvolutionalAutoEncoderWithFCMiddle
 from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.MNISTExampleAltered import MNISTExampleAltered
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.SmallConvolutionalAutoEncoder import \
+    SmallConvolutionalAutoEncoder
+from AutoEncoderTrainer.AutoEncoder.AutoEncoderDefinitions.SmallConvolutionalAutoencoderSlightlyDifferent import \
+    SmallConvolutionalAutoEncoderSlightlyDifferent
 from AutoEncoderTrainer.AutoEncoderConverter import AutoEncoderConverter
 from AutoEncoderTrainer.AutoEncoderTrainer import AutoEncoderTrainer
 from AutoEncoderTrainer.ModelRunner.ModelHyperParameters import ModelHyperParametersRealImagesColor, \
@@ -76,6 +82,6 @@ def run_deep_fully_connected_test():
 
 if __name__ == "__main__":
     model_hyper_parameters = ModelHyperParametersHardAnimationColor()
-    auto_encoder = AlexNetAltered(model_hyper_parameters)
+    auto_encoder = FullyConvolutionalAutoEncoderWithFCMiddle(model_hyper_parameters)
     state_object_classifier = StateObjectClassifier(model_hyper_parameters, auto_encoder)
     state_object_classifier.train_new_model_on_state_objects()

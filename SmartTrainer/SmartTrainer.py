@@ -10,10 +10,11 @@ class SmartTrainer:
     def smart_train(self, input_matrix, output_matrix, model, validation_input_matrix, validation_output_matrix, hyper_params, training_function):
         num_times_through = 0
         trained_model = None
-        while num_times_through < 50 and not self.should_stop_based_on_stats(model, hyper_params):
+        while num_times_through < 1 and not self.should_stop_based_on_stats(model, hyper_params):
             print("We have not met the requirements to stop training.  We are trying another iteration! \n")
             print("The iteration number is: " + str(num_times_through) + "\n")
             trained_model = training_function(input_matrix, output_matrix, model, validation_input_matrix, validation_output_matrix, hyper_params)
+            trained_model.save(hyper_params.working_model_path + hyper_params.model_name)
             num_times_through += 1
         return trained_model
 
